@@ -188,6 +188,7 @@ const resolvers = {
         throw new Error("Failed to fetch users");
       }
     },
+     
 
    
     getUser: async (_: any, { email }: any) => {

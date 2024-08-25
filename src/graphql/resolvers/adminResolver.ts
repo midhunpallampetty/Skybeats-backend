@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { AdminModel } from '../../models/adminModel';
+import { Query } from 'type-graphql';
 interface adminDTO{
     email:string,
      password:string,
@@ -31,11 +32,13 @@ const adminResolver={
           
               // Generate JWT token
               const token = jwt.sign(
-                { adminid: admin._id },
+                { adminid: admin._id ,role:admin.adminType},
                 process.env.JWT_SECRET!,
                 { expiresIn: '2h' }
               );
               console.log('Generated Web token:', token);
+              console.log('Generated Web token:', jwt.decode(token));
+
           
               // Return admin info and token
               return {
@@ -78,5 +81,24 @@ const adminResolver={
             
         }
     },
+    Query:{
+      isAuthorised: async (_:any,payload:any) => {
+        console.log(payload);
+        const verifyToken=jwt.verify(payload.token,process.env.JWT_SECRET!)
+        const {role}:any=verifyToken
+        console.log("Received Unique Name:",role );
+
+        return {
+          message: role,
+        };
+      },
+
+
+    
+
+
+    }
+ 
+  
 }
 export default adminResolver;

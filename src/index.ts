@@ -1,4 +1,5 @@
 import express from 'express';
+import punycode from 'punycode';
 import { ApolloServer } from 'apollo-server-express';
 import connectDB from './common/config/connectDB';
 import userTypeDefs from './graphql/typeDefs/userTypeDefs';
@@ -10,6 +11,7 @@ import 'dotenv/config'
 const startServer = async () => {
     const app: any = express();
     app.use(cors());
+
     await connectDB()
     const server = new ApolloServer({
         typeDefs,
