@@ -52,6 +52,7 @@ const hotelTypeDefs = gql`
     HotelByLocation(city:String!): [Hotel]
 
   }
+    
 `;
 
 export default hotelTypeDefs;

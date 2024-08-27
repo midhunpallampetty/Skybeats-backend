@@ -12,6 +12,7 @@ console.log(mycity)
 
 
 const hotelResolvers = {
+  
   Query: {
     NearByHotels: async () => {
       try {

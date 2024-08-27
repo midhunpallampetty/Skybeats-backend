@@ -28,6 +28,7 @@ const resolvers = {
           password: hashedPassword,
           otp,
           otpExpiry,
+          isBlocked:false,
         });
 
         await newUser.save();
@@ -52,6 +53,26 @@ const resolvers = {
       } catch (error) {
         console.log("Error in Adding User:", error);
         throw new Error("Failed to add User");
+      }
+    },
+
+
+
+    blockUser: async (_: any, { id }: { id: string }) => {
+      try {
+        const user = await UserModel.findById(id);
+        if (!user) {
+          throw new Error('User not found');
+        }
+        
+        // Assuming you have a 'isBlocked' field in your User model
+        user.isBlocked = !user.isBlocked;
+        await user.save();
+        
+        return { message: user.isBlocked ? "User blocked successfully" : "User unblocked successfully" };
+      } catch (error) {
+        console.log(error);
+        return { message: "An error occurred" };
       }
     },
     requestPasswordReset: async (_: any, { email }: any) => {
@@ -142,6 +163,7 @@ const resolvers = {
             id: user._id,
             username: user.username,
             email: user.email,
+            isBlocked:user.isBlocked,
           },
           token,
         };

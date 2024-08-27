@@ -1,6 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 import axios from 'axios';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 
 const fetchFlightData = async (fromAirport: string, toAirport: string) => {
   console.log(fromAirport,toAirport)
@@ -9,7 +9,8 @@ const fetchFlightData = async (fromAirport: string, toAirport: string) => {
     try {
         const response = await axios.get(URL);
         const html:any = response.data;
-        const $ = cheerio.load(html);
+
+        const $ = cheerio.load(html)
 
         const flights :any[]= [];
 

@@ -3,9 +3,10 @@ import { gql } from "apollo-server-express";
 const userTypeDefs = gql`
   # Define the User type with essential fields
   type User {
-    id: ID!
+    id: String!
     username: String!
     email: String!
+    isBlocked:Boolean!
     createdAt: String!
     updatedAt: String!
   }
@@ -31,6 +32,9 @@ const userTypeDefs = gql`
   type ResetResponse {
     message: String!
   }
+    type BlockResponse{
+    message:String!
+    }
   # Define Query operations
   type Query {
     # Fetch list of all users
@@ -42,6 +46,7 @@ const userTypeDefs = gql`
   # Define Mutation operations
   type Mutation {
     requestPasswordReset(email: String!): ResetResponse!
+    blockUser(id:String!):BlockResponse!
 
 # Reset password using a token
     # User signup operation
