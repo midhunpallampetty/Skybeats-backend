@@ -9,8 +9,8 @@ const transporter=nodemailer.createTransport({
 });
 export const sendOtpEmail=async (email:any,otp:String | number)=>{
     const mailOptions = {
-        from: 'midhunpallampetty@gmail.com', // Sender address
-        to: email, // Recipient's email
+        from: 'midhunpallampetty@gmail.com', 
+        to: email, 
         subject: 'Signup Verification',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
@@ -66,7 +66,6 @@ try{
 export const sendResetEmail = async (email: string, resetUrl: string) => {
   
 
-  // Send the email
   await transporter.sendMail({
     to: email,
     from: 'midhunpallampetty@gmail.com',

@@ -1,14 +1,9 @@
 import { hotelBookingModel } from "../../models/hotelBookingModel"; 
 import { sendTicketEmail } from "../../services/emailService";
- interface HotelBookingInput {
-    guestName: string;
-    email: string;
-    phoneNumber: string;
-    
-  }
+import { HotelBookingInput } from "../interfaces/HotelBookingInput";
 const hotelBookingResolver = {
   Mutation: {
-    createHotelBooking: async (_:any, args:{ input:HotelBookingInput }) => {
+    createHotelBooking: async (_:{}, args:{ input:HotelBookingInput }) => {
       try {
         const { input } = args;
         console.log(input,'the dadgwefgtaa is here')

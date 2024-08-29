@@ -7,8 +7,9 @@ const fetchFlightData = async (fromAirport: string, toAirport: string) => {
     const URL = `https://www.cleartrip.com/flight-schedule/${fromAirport}-${toAirport}-flights.html`;
 
     try {
-        const response = await axios.get(URL);
-        const html:any = response.data;
+        const response:{data:string} = await axios.get(URL);
+        console.log('type of response',typeof response.data)
+        const html:string = response.data;
 
         const $ = cheerio.load(html)
 
@@ -34,7 +35,7 @@ const fetchFlightData = async (fromAirport: string, toAirport: string) => {
                 arrivalAirport,
                 duration,
                 stops,
-                price: parseFloat(price.replace(/,/g, '')) // Convert price to number
+                price: parseFloat(price.replace(/,/g, '')) 
             });
         });
 

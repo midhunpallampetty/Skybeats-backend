@@ -4,7 +4,7 @@ import { Locationresponse } from "../interfaces/Locationresponse";
 import { ApiResponse } from "../interfaces/ApiResponse";
 import { Hotel } from "../interfaces/Hotel";
 let mycity: string = '';
-const currentcity: any = axios.get<Locationresponse>('https://ipinfo.io').then((response) => {
+const currentcity: {} = axios.get<Locationresponse>('https://ipinfo.io').then((response) => {
   mycity = response.data.city;
 })
 console.log(mycity)

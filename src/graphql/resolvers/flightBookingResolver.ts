@@ -1,22 +1,9 @@
 import { bookingModel } from "../../models/bookingData"; 
 import { sendTicketEmail } from "../../services/emailService";
- interface BookingInput {
-    passengerName: string;
-    email: string;
-    phoneNumber: string;
-    departureAirport: string;
-    arrivalAirport: string;
-    stop: string;
-    flightNumber: string;
-    flightDuration: string;
-    departureTime: string;
-    arrivalTime: string;
-    totalPassengers: number;
-    FarePaid: number;
-  }
+import { BookingInput } from "../interfaces/BookingInput";
 const flightBookingResolver = {
   Mutation: {
-    createBooking: async (_:any, args:{ input:BookingInput }) => {
+    createBooking: async (_:{}, args:{ input:BookingInput }) => {
       try {
         const { input } = args;
         const booking = new bookingModel(input);

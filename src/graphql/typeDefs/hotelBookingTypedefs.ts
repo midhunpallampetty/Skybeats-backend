@@ -6,15 +6,24 @@ const hotelBookingTypedefs = gql`
     guestName: String!
     email: String!
     phoneNumber: String!
-    
-    
+    noOfGuests:String!
+    checkin:String!
+    checkout:String!
+    amount:Int!
+    hotelName:String!
+    hotelLocation:String!
   }
 
   input hotelBookingInput {
     guestName: String!
     email: String!
     phoneNumber: String!
-    
+    noOfGuests:String!
+    checkin:String!
+    checkout:String!
+    amount:Int!
+    hotelName:String!
+    hotelLocation:String!
   }
 
   type Mutation {

@@ -1,17 +1,14 @@
-// resolvers.js or resolvers.ts
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { UserModel } from "../../models/userModel";
 import { sendOtpEmail, sendResetEmail } from "../../services/emailService";
 import util from "util-functions-nodejs";
-interface SignupDto{
-  email:string,
-   password:string,
-   username:string
-}
+import { verifyOtpDTO } from "../interfaces/verifyOtpDTO";
+import { SignupDTO } from "../interfaces/SignupDTO";
+import { userLoginDTO,passwordResetDTO } from "../interfaces/userLoginDTO";
 const resolvers = {
   Mutation: {
-    userSignup: async (_: any, { username, email, password }: SignupDto) => {
+    userSignup: async (_: {}, { username, email, password }: SignupDTO) => {
       try {
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
@@ -58,14 +55,13 @@ const resolvers = {
 
 
 
-    blockUser: async (_: any, { id }: { id: string }) => {
+    blockUser: async (_: {}, { id }: { id: string }) => {
       try {
         const user = await UserModel.findById(id);
         if (!user) {
           throw new Error('User not found');
         }
         
-        // Assuming you have a 'isBlocked' field in your User model
         user.isBlocked = !user.isBlocked;
         await user.save();
         
@@ -75,7 +71,7 @@ const resolvers = {
         return { message: "An error occurred" };
       }
     },
-    requestPasswordReset: async (_: any, { email }: any) => {
+    requestPasswordReset: async (_: {}, { email }: verifyOtpDTO) => {
       try {
         const resetToken = util.xKeyGenerator(10);
         const resetTokenExpiry = new Date(Date.now() + 7200000);
@@ -95,7 +91,6 @@ const resolvers = {
     
         const resetUrl = `http://localhost:3000/user/resetPassword?token=${resetToken}`;
     
-        // Send the reset email
         await sendResetEmail(email, resetUrl);
     
         return {
@@ -109,7 +104,7 @@ const resolvers = {
     },
     
 
-    verifyOtp: async (_: any, { email, otp }: any) => {
+    verifyOtp: async (_: {}, { email, otp }:verifyOtpDTO ) => {
       try {
         const user = await UserModel.findOne({ email });
         if (!user) {
@@ -141,7 +136,7 @@ const resolvers = {
       }
     },
    
-    userLogin: async (_: any, { email, password }:any) => {
+    userLogin: async (_: {}, { email, password }:userLoginDTO) => {
       try {
         const user = await UserModel.findOne({ email });
         if (!user) {
@@ -173,7 +168,7 @@ const resolvers = {
       }
     },
 
-    resetPassword: async (_: any, { token, newPassword }: any) => {
+    resetPassword: async (_: {}, { token, newPassword }:passwordResetDTO) => {
       try {
         const user = await UserModel.findOne({
           resetPasswordToken: token,
@@ -213,7 +208,7 @@ const resolvers = {
      
 
    
-    getUser: async (_: any, { email }: any) => {
+    getUser: async (_: {}, { email }: userLoginDTO) => {
       try {
         const user = await UserModel.findOne({ email });
         if (!user) {
