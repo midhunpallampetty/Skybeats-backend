@@ -1,6 +1,7 @@
 import { bookingModel } from "../../models/bookingData"; 
 import { sendTicketEmail } from "../../services/emailService";
 import { BookingInput } from "../interfaces/BookingInput";
+import { SeatModel } from "../../models/Seats";
 const flightBookingResolver = {
   Mutation: {
     createBooking: async (_:{}, args:{ input:BookingInput }) => {
