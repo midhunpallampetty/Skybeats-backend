@@ -15,6 +15,7 @@ const flightBookingTypedefs = gql`
     arrivalTime: String!
     totalPassengers: Int!
     FarePaid: Float!
+    seatNumber:ID
   }
 
   input BookingInput {

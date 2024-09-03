@@ -12,6 +12,7 @@ const bookingSchema=new mongoose.Schema({
     arrivalTime:String,
     totalPassengers:Number,
     FarePaid:Number,
+    seatNumber:Object,
 
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);

@@ -5,6 +5,7 @@ import hotelResolvers from "./hotelResolver";
 import adminResolver from "./adminResolver";
 import seatResolvers from "./seatResolver";
 import hotelBookingResolver from "./hotelBookingResolver";
+import cloudImageResolver from "./cloudImageResolver";
 import flightBookingResolver from "./flightBookingResolver";
-const resolvers=mergeResolvers([userResolver,flightResolvers,adminResolver,hotelResolvers,hotelBookingResolver,seatResolvers,flightBookingResolver]);
+const resolvers=mergeResolvers([userResolver,cloudImageResolver,flightResolvers,adminResolver,hotelResolvers,hotelBookingResolver,seatResolvers,flightBookingResolver]);
 export default resolvers;
