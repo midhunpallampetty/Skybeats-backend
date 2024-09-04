@@ -13,6 +13,7 @@ const bookingSchema=new mongoose.Schema({
     totalPassengers:Number,
     FarePaid:Number,
     seatNumber:Object,
+    ticketUrl: { type: String }, // Add this field
 
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);

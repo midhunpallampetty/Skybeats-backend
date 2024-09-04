@@ -20,7 +20,7 @@
     "@types/nodemailer": "^6.4.15",
     "apollo-server-express": "^3.13.0",
     "apollo-server-micro": "^3.13.0",
-    "aws-sdk": "^2.1687.0",
+    "aws-sdk": "^2.1688.0",
     "axios": "^1.7.3",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -33,6 +33,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.1",
     "nodemailer": "^6.9.14",
+    "pdfkit": "^0.15.0",
     "punycode": "^2.3.1",
     "type-graphql": "^2.0.0-rc.2",
     "util-functions-nodejs": "^1.1.5"
@@ -44,6 +45,7 @@
     "@types/graphql": "^14.2.3",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^20.14.12",
+    "@types/pdfkit": "^0.13.4",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
