@@ -26,6 +26,7 @@ const resolvers = {
           otp,
           otpExpiry,
           isBlocked:false,
+          walletBalance:0,
         });
 
         await newUser.save();

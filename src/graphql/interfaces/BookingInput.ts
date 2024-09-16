@@ -11,4 +11,6 @@ export interface BookingInput {
     arrivalTime: string;
     totalPassengers: number;
     FarePaid: number;
+    ticketUrl:string;
+    seatNumber:string;
   }

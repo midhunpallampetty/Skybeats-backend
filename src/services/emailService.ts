@@ -109,11 +109,18 @@ export const sendResetEmail = async (email: string, resetUrl: string) => {
 
 
 
-export const sendTicketEmail = async (email: string) => {
+export const sendTicketEmail = async (email: string,passengerName:string,flightNumber:string,departureAirport:string,arrivalAirport:string,departureTime:string,arrivalTime:string,FarePaid:number,ticketUrl:string) => {
   const mailOptions={
-    to: 'midhunshoranur12@gmail.com',
+    to: email,
     from: 'midhunpallampetty@gmail.com',
     subject: 'Your Flight Ticket - Booking Confirmation',
+    attachments: [
+      {
+        filename: 'Ticket.pdf', 
+        path: ticketUrl,
+        contentType: 'application/pdf' 
+      }
+    ],
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <div style="background-color: #003366; padding: 20px; text-align: center; color: #fff;">
@@ -121,20 +128,20 @@ export const sendTicketEmail = async (email: string) => {
           <h2>Flight Booking Confirmation</h2>
         </div>
         <div style="padding: 20px;">
-          <h3 style="color: #333;">Dear testuser,</h3>
+          <h3 style="color: #333;">Dear ${passengerName},</h3>
           <p>Thank you for booking your flight with SkyBeats. Below are your flight details:</p>
           <div style="background-color: #f5f5f5; padding: 10px; margin: 20px 0; border-radius: 5px;">
             <h4 style="color: #003366; text-align: center;">Flight Details</h4>
-            <p><strong>Flight Number:</strong> testemail</p>
-            <p><strong>Departure:</strong> testemail</p>
-            <p><strong>Arrival:</strong> testemail</p>
-            <p><strong>Departure Time:</strong> testemail</p>
-            <p><strong>Arrival Time:</strong> testemail</p>
-            <p><strong>Total Fare:</strong> testemail</p>
+            <p><strong>Flight Number:</strong> ${flightNumber}</p>
+            <p><strong>Departure:</strong> ${departureAirport}</p>
+            <p><strong>Arrival:</strong> ${arrivalAirport}</p>
+            <p><strong>Departure Time:</strong> ${departureTime}</p>
+            <p><strong>Arrival Time:</strong>${arrivalTime}</p>
+            <p><strong>Total Fare:</strong> ${FarePaid}</p>
           </div>
           <p>We wish you a pleasant flight! Please keep this email as your ticket and reference for your travel.</p>
           <div style="text-align: center; margin: 20px 0;">
-            <a href="https://yourwebsite.com/download-ticket?email=${email}" style="display: inline-block; padding: 10px 20px; background-color: #003366; color: #fff; text-decoration: none; border-radius: 5px;">Download E-Ticket</a>
+            <a href="${ticketUrl}" style="display: inline-block; padding: 10px 20px; background-color: #003366; color: #fff; text-decoration: none; border-radius: 5px;">Download E-Ticket</a>
           </div>
           <p style="color: #666; text-align: center;">If you have any questions, please contact our <a href="https://yourwebsite.com/support" style="color: #003366; text-decoration: none;">customer support</a>.</p>
         </div>
@@ -163,4 +170,5 @@ export const sendTicketEmail = async (email: string) => {
     console.log('error while sending email');
   }
 };
+
 

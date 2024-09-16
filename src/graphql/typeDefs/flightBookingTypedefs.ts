@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express';
 const flightBookingTypedefs = gql`
   type Booking {
     id: ID!
+    userId:ID!
     passengerName: String!
     email: String!
     phoneNumber: String!
@@ -16,9 +17,11 @@ const flightBookingTypedefs = gql`
     totalPassengers: Int!
     FarePaid: Float!
     seatNumber:ID
+    ticketUrl:String!
   }
 
   input BookingInput {
+    userId:ID!
     passengerName: String!
     email: String!
     phoneNumber: String!
@@ -31,6 +34,12 @@ const flightBookingTypedefs = gql`
     arrivalTime: String!
     totalPassengers: Int!
     FarePaid: Float!
+    ticketUrl:String!
+    seatNumber:ID
+    
+
+
+
   }
 
   type Mutation {
@@ -38,6 +47,7 @@ const flightBookingTypedefs = gql`
   }
     type Query{
     getAllBooking:[Booking!]!
+    getBookingById(userId:ID!):[Booking!]!
     }
 `;
 

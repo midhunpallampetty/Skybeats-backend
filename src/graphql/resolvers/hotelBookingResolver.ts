@@ -9,7 +9,7 @@ const hotelBookingResolver = {
         console.log(input,'the dadgwefgtaa is here')
         const booking = new hotelBookingModel(input);
         const savedBooking = await booking.save();
-        await sendTicketEmail(input.email);
+        // await sendTicketEmail(input.email,input.guestName);
         return savedBooking;
       } catch (error:any) {
         throw new Error('Error creating booking: ' + error.message);

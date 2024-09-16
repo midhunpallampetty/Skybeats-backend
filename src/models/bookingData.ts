@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const bookingSchema=new mongoose.Schema({
+    userId:mongoose.Schema.Types.ObjectId,
     passengerName:String,
     email:String,
     phoneNumber:Number,
@@ -13,8 +14,8 @@ const bookingSchema=new mongoose.Schema({
     totalPassengers:Number,
     FarePaid:Number,
     seatNumber:Object,
-    ticketUrl: { type: String }, // Add this field
-
+    ticketUrl: { type: String },
+    cancelled:{type:Boolean}
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);
 

@@ -1,6 +1,7 @@
 import { gql } from "apollo-server-express"
 const seatTypedefs=gql`
 type Seat {
+  _id:ID!
   row: Int!
   col: String!
   x: Int!
@@ -11,7 +12,7 @@ type Seat {
 }
 
 type Query {
-  getSeats: [Seat!]!
+  getSeats(flightNumber:String!): [Seat!]!
 }
 `;
 export default seatTypedefs;
