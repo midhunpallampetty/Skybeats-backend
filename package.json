@@ -36,6 +36,7 @@
     "nodemailer": "^6.9.14",
     "pdfkit": "^0.15.0",
     "punycode": "^2.3.1",
+    "socket.io": "^4.8.0",
     "type-graphql": "^2.0.0-rc.2",
     "util-functions-nodejs": "^1.1.5"
   },
@@ -50,5 +51,9 @@
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8",
+    "utf-8-validate": "^6.0.4"
   }
 }
