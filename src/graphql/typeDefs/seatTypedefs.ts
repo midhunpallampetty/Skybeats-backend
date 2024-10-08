@@ -12,7 +12,7 @@ type Seat {
 }
 
 type Query {
-  getSeats(flightNumber:String!): [Seat!]!
+  getSeats(flightNumber:String!,flightModel:String!): [Seat!]!
 }
 `;
 export default seatTypedefs;

@@ -13,4 +13,5 @@ export interface BookingInput {
     FarePaid: number;
     ticketUrl:string;
     seatNumber:string;
+    flightModel:string;
   }

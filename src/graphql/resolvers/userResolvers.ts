@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { UserModel } from "../../models/userModel";
+import mongoose from "mongoose";
 import { sendOtpEmail, sendResetEmail } from "../../services/emailService";
 import util from "util-functions-nodejs";
 import { verifyOtpDTO } from "../interfaces/verifyOtpDTO";
@@ -221,6 +222,22 @@ const resolvers = {
         throw new Error("Failed to fetch user");
       }
     },
+    getUserById: async (_: {}, { userId }: { userId: string }) => {
+      try {
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
+          throw new Error("Invalid user ID format");
+        }
+        const user = await UserModel.findOne({ _id: userId });
+        if (!user) {
+          throw new Error("User not found");
+        }
+        return user;
+      } catch (error) {
+        console.log("Error fetching user:", error);
+        throw new Error("Failed to fetch user");
+      }
+    },
+    
   },
 };
 

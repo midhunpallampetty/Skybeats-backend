@@ -13,9 +13,10 @@ const bookingSchema=new mongoose.Schema({
     arrivalTime:String,
     totalPassengers:Number,
     FarePaid:Number,
-    seatNumber:Object,
+    seatNumber:[String],
     ticketUrl: { type: String },
-    cancelled:{type:Boolean}
+    cancelled:{type:Boolean},
+    DateofJourney:{type:String}
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);
 

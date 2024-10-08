@@ -54,6 +54,7 @@ const cargoResolver = {
       }
     },
     trackCargo: async (_:{},args: { trackingId: string }) => {
+      console.log('idfrfdrd',args.trackingId)
       try {
         const { trackingId } = args;
         const details = await cargoModel.find({trackingId})

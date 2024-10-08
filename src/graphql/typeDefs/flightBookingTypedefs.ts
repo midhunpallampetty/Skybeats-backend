@@ -16,8 +16,11 @@ const flightBookingTypedefs = gql`
     arrivalTime: String!
     totalPassengers: Int!
     FarePaid: Float!
-    seatNumber:ID
+    seatNumber:[String]
     ticketUrl:String!
+    DateofJourney:String!
+    flightModel:String
+
   }
 
   input BookingInput {
@@ -35,7 +38,10 @@ const flightBookingTypedefs = gql`
     totalPassengers: Int!
     FarePaid: Float!
     ticketUrl:String!
-    seatNumber:ID
+    seatNumber:[String]
+    DateofJourney:String!
+    flightModel:String
+    
     
 
 
@@ -43,7 +49,7 @@ const flightBookingTypedefs = gql`
   }
 
   type Mutation {
-    createBooking(input: BookingInput!): Booking!
+      createBooking(input: BookingInput!, flightModel: String!): Booking!
   }
     type Query{
     getAllBooking:[Booking!]!

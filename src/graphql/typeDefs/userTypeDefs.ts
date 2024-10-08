@@ -6,7 +6,7 @@ const userTypeDefs = gql`
     username: String!
     email: String!
     isBlocked:Boolean!
-    createdAt: String!
+    createdAt: String
     updatedAt: String!
   }
 
@@ -34,6 +34,7 @@ const userTypeDefs = gql`
   type Query {
     getUserList: [User!]!
     getUser(email: String!): User
+    getUserById(userId:String!):User
   }
 
   type Mutation {
