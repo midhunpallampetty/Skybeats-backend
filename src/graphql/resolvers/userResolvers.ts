@@ -7,6 +7,13 @@ import util from "util-functions-nodejs";
 import { verifyOtpDTO } from "../interfaces/verifyOtpDTO";
 import { SignupDTO } from "../interfaces/SignupDTO";
 import { userLoginDTO,passwordResetDTO } from "../interfaces/userLoginDTO";
+interface changePasswordDTO{
+  id:string,
+  oldpassword:string,
+  newpassword:string,
+
+
+}
 const resolvers = {
   Mutation: {
     userSignup: async (_: {}, { username, email, password }: SignupDTO) => {
@@ -104,8 +111,47 @@ const resolvers = {
         throw new Error("Failed to send reset email");
       }
     },
+    changePassword: async (_: {}, { id, oldpassword, newpassword }: changePasswordDTO) => {
+      try {
+        // Find the user by ID
+        const user = await UserModel.findById(id);
+        if (!user) {
+          return {
+            status: 404,          
+            message: "User not found",
+          };
+        }
     
-
+        // Compare the old password with the stored password
+        const isPasswordCorrect = await bcrypt.compare(oldpassword, user.password);
+        if (!isPasswordCorrect) {
+          return {
+            status: 400,
+            message: "Incorrect old password",
+          };
+        }
+    
+        // Hash the new password
+        const hashedNewPassword = await bcrypt.hash(newpassword, 10);
+        user.password = hashedNewPassword;
+    
+        // Save the updated user with the new password
+        await user.save();
+    
+        return {
+          status: 200,
+          message: "Password changed successfully!",
+        };
+      } catch (error) {
+        console.log("Error in changing password:", error);
+        return {
+          status: 500,
+          message: "Failed to change password",
+        };
+      }
+    },
+    
+    
     verifyOtp: async (_: {}, { email, otp }:verifyOtpDTO ) => {
       try {
         const user = await UserModel.findOne({ email });

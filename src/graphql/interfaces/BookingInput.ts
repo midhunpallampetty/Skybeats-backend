@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongoose';
 export interface BookingInput {
     passengerName: string;
     email: string;
@@ -11,7 +12,10 @@ export interface BookingInput {
     arrivalTime: string;
     totalPassengers: number;
     FarePaid: number;
-    ticketUrl:string;
+    ticketUrls:[string];
     seatNumber:string;
     flightModel:string;
-  }
+    returnDate:string;
+    userId:ObjectId;
+    DateofJourney:string;                                                               
+  }               

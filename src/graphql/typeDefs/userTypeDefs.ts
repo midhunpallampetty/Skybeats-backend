@@ -28,6 +28,10 @@ const userTypeDefs = gql`
   type ResetResponse {
     message: String!
   }
+     type ChangeResponse {
+    message: String!
+    status:Float!
+  }
     type BlockResponse{
     message:String!
     }
@@ -40,7 +44,7 @@ const userTypeDefs = gql`
   type Mutation {
     requestPasswordReset(email: String!): ResetResponse!
     blockUser(id:String!):BlockResponse!
-
+    changePassword(id: String!, oldpassword: String!, newpassword: String!): ChangeResponse!
     userSignup(username: String!, email: String!, password: String!): AuthPayload!
     resetPassword(token: String!, newPassword: String!): ResetResponse!
     verifyOtp(email: String!, otp: String!): AuthPayload!

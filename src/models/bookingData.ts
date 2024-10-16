@@ -1,7 +1,16 @@
 import mongoose from 'mongoose';
+
+const passengerSchema = new mongoose.Schema({
+    age: String,
+    disability: String,
+    firstName: String,
+    lastName: String,
+    middleName: String,
+    passportNumber: String
+});
 const bookingSchema=new mongoose.Schema({
     userId:mongoose.Schema.Types.ObjectId,
-    passengerName:String,
+    passengerName:[passengerSchema],
     email:String,
     phoneNumber:Number,
     departureAirport:String,
@@ -14,10 +23,8 @@ const bookingSchema=new mongoose.Schema({
     totalPassengers:Number,
     FarePaid:Number,
     seatNumber:[String],
-    ticketUrl: { type: String },
+    ticketUrls: { type: [String] },
     cancelled:{type:Boolean},
     DateofJourney:{type:String}
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);
-
-

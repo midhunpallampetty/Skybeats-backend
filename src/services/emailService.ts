@@ -109,18 +109,18 @@ export const sendResetEmail = async (email: string, resetUrl: string) => {
 
 
 
-export const sendTicketEmail = async (email: string,passengerName:string,flightNumber:string,departureAirport:string,arrivalAirport:string,departureTime:string,arrivalTime:string,FarePaid:number,ticketUrl:string) => {
-  const mailOptions={
+export const sendTicketEmail = async (email: string, passengerName: string, flightNumber: string, departureAirport: string, arrivalAirport: string, departureTime: string, arrivalTime: string, FarePaid: number, ticketUrls: string[]) => {
+  const attachments = ticketUrls.map((url, index) => ({
+    filename: `Ticket-${index + 1}.pdf`, // Naming the tickets as Ticket-1.pdf, Ticket-2.pdf, etc.
+    path: url,
+    contentType: 'application/pdf'
+  }));
+
+  const mailOptions = {
     to: email,
     from: 'midhunpallampetty@gmail.com',
     subject: 'Your Flight Ticket - Booking Confirmation',
-    attachments: [
-      {
-        filename: 'Ticket.pdf', 
-        path: ticketUrl,
-        contentType: 'application/pdf' 
-      }
-    ],
+    attachments: attachments,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <div style="background-color: #003366; padding: 20px; text-align: center; color: #fff;">
@@ -128,7 +128,7 @@ export const sendTicketEmail = async (email: string,passengerName:string,flightN
           <h2>Flight Booking Confirmation</h2>
         </div>
         <div style="padding: 20px;">
-          <h3 style="color: #333;">Dear ${passengerName},</h3>
+          <h3 style="color: #333;">Dear User,</h3>
           <p>Thank you for booking your flight with SkyBeats. Below are your flight details:</p>
           <div style="background-color: #f5f5f5; padding: 10px; margin: 20px 0; border-radius: 5px;">
             <h4 style="color: #003366; text-align: center;">Flight Details</h4>
@@ -136,12 +136,12 @@ export const sendTicketEmail = async (email: string,passengerName:string,flightN
             <p><strong>Departure:</strong> ${departureAirport}</p>
             <p><strong>Arrival:</strong> ${arrivalAirport}</p>
             <p><strong>Departure Time:</strong> ${departureTime}</p>
-            <p><strong>Arrival Time:</strong>${arrivalTime}</p>
+            <p><strong>Arrival Time:</strong> ${arrivalTime}</p>
             <p><strong>Total Fare:</strong> ${FarePaid}</p>
           </div>
           <p>We wish you a pleasant flight! Please keep this email as your ticket and reference for your travel.</p>
           <div style="text-align: center; margin: 20px 0;">
-            <a href="${ticketUrl}" style="display: inline-block; padding: 10px 20px; background-color: #003366; color: #fff; text-decoration: none; border-radius: 5px;">Download E-Ticket</a>
+            ${ticketUrls.map((url, index) => `<a href="${url}" style="display: inline-block; padding: 10px 20px; background-color: #003366; color: #fff; text-decoration: none; border-radius: 5px; margin: 10px;">Download E-Ticket ${index + 1}</a>`).join('')}
           </div>
           <p style="color: #666; text-align: center;">If you have any questions, please contact our <a href="https://yourwebsite.com/support" style="color: #003366; text-decoration: none;">customer support</a>.</p>
         </div>
@@ -163,12 +163,11 @@ export const sendTicketEmail = async (email: string,passengerName:string,flightN
       </div>
     `,
   };
-  try{
-    await transporter.sendMail(mailOptions)
-    console.log('mail send success')
-  }catch(error){
-    console.log('error while sending email');
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Email with multiple tickets sent successfully');
+  } catch (error) {
+    console.log('Error while sending email with multiple tickets:', error);
   }
 };
-
-

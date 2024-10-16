@@ -6,32 +6,46 @@ import { flightmodel } from "../../models/flights";
 import {oneeightyseatModel} from '../../models/oneeightySeats'
 import {twoeightyseatModel} from '../../models/twoeightySeats'
 import {onetwentyseatModel} from '../../models/onetwentySeats'
+type Passenger = {
+  firstName: string;
+  lastName: string;
+};
 
-import mongoose from "mongoose";
+interface Input {
+  passengerName: Passenger[];
+}
+type User = {
+  age: string;
+  disability: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  passportNumber: string;
+};
 const flightBookingResolver = {
   Mutation: {
     createBooking: async (_: {}, args: { input: BookingInput; flightModel: string }) => {
       console.log(args.input, 'input');
-      console.log(args.flightModel, 'input');
+      console.log(args.flightModel, 'flightModel');
     
       try {
         let seats;
-        // Determine which seat model to use based on the flight model
+        
         if (args.flightModel.includes('Boeing 737') || args.flightModel.includes('Airbus A320')) {
           console.log(args.flightModel, 'Validating seat with 180-seat configuration');
-          seats = await oneeightyseatModel.find(); // 180-seat configuration
+          seats = await oneeightyseatModel.find({ isBooked: false }); 
         } else if (args.flightModel.includes('Boeing') && !args.flightModel.includes('737')) {
           console.log(args.flightModel, 'Validating seat with 280-seat configuration');
-          seats = await twoeightyseatModel.find(); // 280-seat configuration for other Boeing models
+          seats = await twoeightyseatModel.find({ isBooked: false });
         } else if (args.flightModel.includes('Airbus') && !args.flightModel.includes('320')) {
           console.log(args.flightModel, 'Validating seat with 280-seat configuration');
-          seats = await twoeightyseatModel.find(); // 280-seat configuration for other Airbus models
+          seats = await twoeightyseatModel.find({ isBooked: false });
         } else {
           console.log(args.flightModel, 'Validating seat with 120-seat configuration');
-          seats = await onetwentyseatModel.find(); // Default to 120-seat configuration
+          seats = await onetwentyseatModel.find({ isBooked: false });
         }
     
-        const selectedSeatNumbers = args.input.seatNumber; // Array of seat numbers
+        const selectedSeatNumbers = args.input.seatNumber; 
         const bookedSeats = [];
     
         // Check if each seat exists in the available seats
@@ -40,17 +54,23 @@ const flightBookingResolver = {
             const seatExists = seats.find(seat => seat._id.toString() === seatId);
     
             if (!seatExists) {
-              throw new Error(`Provided seat number ${seatId} does not exist.`);
+              throw new Error(`Provided seat number ${seatId} does not exist or is already booked.`);
             }
+    
+            
+            await seatExists.save();
     
             bookedSeats.push(seatId); // Add existing seat ID to bookedSeats array
           }
         } else {
           // Random seat selection if no seats provided
-          let number = 3;
-          if (seats[number].isBooked) {
-            number = randomSeat(seats);
+          let number = Math.floor(Math.random() * seats.length); // Random index
+          while (seats[number].isBooked) {
+            number = Math.floor(Math.random() * seats.length); // Pick another random seat
           }
+    
+          seats[number].isBooked = true;
+          await seats[number].save(); // Mark the random seat as booked
     
           bookedSeats.push(seats[number]._id); // Add selected random seat
         }
@@ -68,7 +88,9 @@ const flightBookingResolver = {
         const savedBooking = await booking.save();
     
         await flightDataUpdation.save();
-    
+    const mainUser = input.passengerName?.[0];
+    console.log(mainUser.toString(),'hai')
+
         await sendTicketEmail(
           input.email,
           input.passengerName,
@@ -78,7 +100,7 @@ const flightBookingResolver = {
           input.departureTime,
           input.arrivalTime,
           input.FarePaid,
-          input.ticketUrl
+          input.ticketUrls
         );
     
         return savedBooking;
@@ -86,6 +108,7 @@ const flightBookingResolver = {
         throw new Error('Error creating booking: ' + error.message);
       }
     },
+    
     
 
   },
@@ -100,7 +123,7 @@ const flightBookingResolver = {
 
       }
     },
-    getBookingById: async (_: {}, { userId }: { userId: string }) => {
+    getBookingById: async (_: {}, { userId }: { userId: string }) => {          
       try {
         const bookings = await bookingModel.find({ userId: userId });
     

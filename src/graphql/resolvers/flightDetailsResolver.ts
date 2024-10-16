@@ -4,18 +4,18 @@ import * as cheerio from 'cheerio';
 export const flightDetailsResolver = {
   Query: {
     async getAircraftModel(_: any, { flightNumber }: { flightNumber: string }) {
-        const dataAirline=JSON.parse(JSON.stringify(flightNumber)).trim();
-        let code=[]
-        const cleanedFlightString = dataAirline.replace(/\s+/g, ' ').trim();
-    for(let i of dataAirline){
-        if(i !=' ' && i!='-'){
-            code.push(i)
-        }
+    //     const dataAirline=JSON.parse(JSON.stringify(flightNumber)).trim();
+    //     let code=[]
+    //     const cleanedFlightString = dataAirline.replace(/\s+/g, ' ').trim();
+    // for(let i of dataAirline){
+    //     if(i !=' ' && i!='-'){
+    //         code.push(i)
+    //     }
 
-    }
-    const flightParts = code.toString().split('\n');
-   const airlinecode=flightParts[0].split("").filter(i=>i!=",").join("");
-   const aircraftNumber=flightParts[1].split('').filter(i=>i!=',').join('');
+    // }
+    // const flightParts = code.toString().split('\n');
+   const airlinecode="6E";
+   const aircraftNumber='1475';
     
     console.log(airlinecode);
     console.log(aircraftNumber)
