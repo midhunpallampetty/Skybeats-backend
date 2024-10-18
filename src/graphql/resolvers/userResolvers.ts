@@ -7,6 +7,7 @@ import util from "util-functions-nodejs";
 import { verifyOtpDTO } from "../interfaces/verifyOtpDTO";
 import { SignupDTO } from "../interfaces/SignupDTO";
 import { userLoginDTO,passwordResetDTO } from "../interfaces/userLoginDTO";
+import { profiledetailModel } from "../../models/profileDetailsModel";
 interface changePasswordDTO{
   id:string,
   oldpassword:string,

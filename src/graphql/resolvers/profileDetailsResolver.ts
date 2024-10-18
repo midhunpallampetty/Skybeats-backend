@@ -1,5 +1,7 @@
 import { profiledetailModel } from "../../models/profileDetailsModel";
 import { ProfileDTO } from "../interfaces/profileDTO";
+import { UserModel } from "../../models/userModel";
+import { ObjectId } from "mongoose";
 const profileDetailResolver={
     Mutation:{
         addorUpdateProfile:async(_:{},args:{input:ProfileDTO})=>{
@@ -31,12 +33,27 @@ const profileDetailResolver={
         getProfileDetails:async(_:{},userId:String)=>{
             try{
                 const user=await profiledetailModel.findOne(userId)
+              
                 return user
             }catch(error){
                 console.log('cannot find user ')
             }
             
-        }
+        },
+        getWalletDetails: async (_:{}, { userId }:any) => {
+            try {
+              const user = await UserModel.findOne({ _id: userId }, { walletBalance: 1, _id: 0 }); 
+              
+              if (!user) {
+                throw new Error("User not found");
+              }
+      
+              return { walletBalance: user.walletBalance };
+            } catch (error:any) {
+              console.log(`Can't perform operation: ${error.message}`);
+              throw new Error("Error fetching wallet details");
+            }
+          },
     }
 }
 export default profileDetailResolver;

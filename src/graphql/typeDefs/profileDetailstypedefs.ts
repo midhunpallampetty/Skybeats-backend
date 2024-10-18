@@ -20,13 +20,17 @@ input ProfileInput{
     birthday:String
 
 }    
-
+type User {
+  _id: ID!
+  walletBalance: Float
+}
 type Mutation{
 addorUpdateProfile(input:ProfileInput!):Profile!
 }
 type Query{
 getProfileDetails(userId:String!):Profile!
-}
+  getWalletDetails(userId: ID!): User
+  }
 
 
 `;

@@ -7,5 +7,6 @@ const profileDetailsSchema=new mongoose.Schema({
     permananentAddress:{type:String},
     email:{type:String},
     birthday:{type:String}
+    
 })
 export const profiledetailModel=mongoose.model('profile',profileDetailsSchema)

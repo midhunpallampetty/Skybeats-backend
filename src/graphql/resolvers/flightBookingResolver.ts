@@ -25,7 +25,7 @@ type User = {
 const flightBookingResolver = {
   Mutation: {
     createBooking: async (_: {}, args: { input: BookingInput; flightModel: string }) => {
-      console.log(args.input, 'input');
+      console.log(args.input, 'inputgreg');
       console.log(args.flightModel, 'flightModel');
     
       try {
