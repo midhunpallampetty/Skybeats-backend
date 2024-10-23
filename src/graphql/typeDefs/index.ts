@@ -11,9 +11,12 @@ import seatTypedefs from './seatTypedefs';
 import hotelBookingTypedefs from './hotelBookingTypedefs';
 import { gql } from 'apollo-server-express';
 import returnFlightBTypedefs from './returnFlightTypedefs';
+import cancelBookingTypedef from './cancelBookingTypedef';
 import careerTypedefs from './careerTypedef';
 import cloudImageTypedefs from './cloudImageTypedefs';
 import flightDetailsTypeDef from './flightDetailtypedef';
 import flightBookingTypedefs from './flightBookingTypedefs';
-const typeDefs=mergeTypeDefs([userTypeDefs,cloudImageTypedefs,returnFlightBTypedefs,profileDetailstypedef,flightDetailsTypeDef,checkSeatTypedefs,applyJobTypedefs,flightTypeDefs,cargoTypedef,hotelBookingTypedefs,careerTypedefs,adminTypedefs,hotelTypeDefs,seatTypedefs,flightBookingTypedefs])
+import googleLoginTypedefs from './googleLoginTypedefs';
+import googleAuthSchema from './googleAuthSchema';
+const typeDefs=mergeTypeDefs([userTypeDefs,googleAuthSchema,cancelBookingTypedef,googleLoginTypedefs,cloudImageTypedefs,returnFlightBTypedefs,profileDetailstypedef,flightDetailsTypeDef,checkSeatTypedefs,applyJobTypedefs,flightTypeDefs,cargoTypedef,hotelBookingTypedefs,careerTypedefs,adminTypedefs,hotelTypeDefs,seatTypedefs,flightBookingTypedefs])
 export default typeDefs;

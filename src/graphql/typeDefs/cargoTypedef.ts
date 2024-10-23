@@ -32,6 +32,7 @@ const cargoTypedef = gql`
     type Query{
     getRequests:[CargoBooking!]
     trackCargo(trackingId:String!):[CargoBooking!]!
+    getCargoByUser(userId:String!):[CargoBooking!]! 
     }
 `;
 

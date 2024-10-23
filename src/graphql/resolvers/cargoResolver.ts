@@ -62,6 +62,16 @@ const cargoResolver = {
       } catch (error) {
         console.log('canot find details')
       }
+    },
+    getCargoByUser:async(_:{},args:{userId:string})=>{
+      console.log(args.userId,'dscdscd')
+      try{
+      const {userId}=args;
+      const cargoDetails=await cargoModel.find({userId})
+      return cargoDetails;
+      }catch(error){
+      console.log('sorry, currently i am busy')
+      }
     }
 
   }

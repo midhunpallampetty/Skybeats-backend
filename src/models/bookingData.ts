@@ -25,6 +25,7 @@ const bookingSchema=new mongoose.Schema({
     seatNumber:[String],
     ticketUrls: { type: [String] },
     cancelled:{type:Boolean},
-    DateofJourney:{type:String}
+    DateofJourney:{type:String},
+    
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);

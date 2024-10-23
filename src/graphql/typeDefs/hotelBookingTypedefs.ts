@@ -12,6 +12,7 @@ const hotelBookingTypedefs = gql`
     amount:Int!
     hotelName:String!
     hotelLocation:String!
+    createdAt:String
   }
 
   input hotelBookingInput {
