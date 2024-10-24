@@ -24,7 +24,7 @@ const bookingSchema=new mongoose.Schema({
     FarePaid:Number,
     seatNumber:[String],
     ticketUrls: { type: [String] },
-    cancelled:{type:Boolean},
+    cancelled:{type:Boolean,default:false},
     DateofJourney:{type:String},
     
 })

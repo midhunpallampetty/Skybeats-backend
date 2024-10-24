@@ -6,6 +6,8 @@ import { flightmodel } from "../../models/flights";
 import {oneeightyseatModel} from '../../models/oneeightySeats'
 import {twoeightyseatModel} from '../../models/twoeightySeats'
 import {onetwentyseatModel} from '../../models/onetwentySeats'
+import util from 'util-functions-nodejs'
+import { transactionModel } from "../../models/transactionModel";
 type Passenger = {
   firstName: string;
   lastName: string;
@@ -30,7 +32,16 @@ const flightBookingResolver = {
     
       try {
         let seats;
-        
+        const trackingId = 'TRB' + util.generateOtp(12)
+        const transactionData={
+          userId:args.input.userId,
+          transactionType:'success',
+          transactionId:trackingId,
+          status:'success',
+          amount:args.input.FarePaid,
+        }
+        const saveTransaction=new transactionModel(transactionData)
+        saveTransaction.save()
         if (args.flightModel.includes('Boeing 737') || args.flightModel.includes('Airbus A320')) {
           console.log(args.flightModel, 'Validating seat with 180-seat configuration');
           seats = await oneeightyseatModel.find({ isBooked: false }); 

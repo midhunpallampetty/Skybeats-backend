@@ -9,7 +9,8 @@ const hotelBookingSchema=new mongoose.Schema({
     amount:Number,
     hotelName:String,
     hotelLocation:String,
-    createdAt:{type:String,default:new Date()}
+    createdAt:{type:String,default:new Date()},
+    userId:{type:String}
 
 })
 export const hotelBookingModel=mongoose.model('HotelBooking',hotelBookingSchema);

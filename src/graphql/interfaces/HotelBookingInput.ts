@@ -6,4 +6,5 @@ export interface HotelBookingInput {
     checkin:string;
     checkout:string;
     amount:number;
+    userId:string;
   }

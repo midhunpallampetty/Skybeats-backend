@@ -29,6 +29,7 @@ type Passenger {
     ticketUrls:[String]
     DateofJourney:String
     flightModel:String
+    cancelled:Boolean
 
   }
   input PassengerInput {

@@ -13,6 +13,7 @@ const hotelBookingTypedefs = gql`
     hotelName:String!
     hotelLocation:String!
     createdAt:String
+    userId:String
   }
 
   input hotelBookingInput {
@@ -25,6 +26,7 @@ const hotelBookingTypedefs = gql`
     amount:Int!
     hotelName:String!
     hotelLocation:String!
+    userId:String
   }
 
   type Mutation {
