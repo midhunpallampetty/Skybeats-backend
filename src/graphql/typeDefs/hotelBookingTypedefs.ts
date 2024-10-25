@@ -14,6 +14,7 @@ const hotelBookingTypedefs = gql`
     hotelLocation:String!
     createdAt:String
     userId:String
+    cancelled:Boolean
   }
 
   input hotelBookingInput {
@@ -33,7 +34,7 @@ const hotelBookingTypedefs = gql`
     createHotelBooking(input: hotelBookingInput!): hotelBooking!
   }
     type Query{
-    getAllHotelBooking:[hotelBooking!]!
+      getAllHotelBooking(userId:String!):[hotelBooking!]!
     }
 `;
 

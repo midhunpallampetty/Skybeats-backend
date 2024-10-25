@@ -1,0 +1,1707 @@
+
+[
+  {
+    "airlineCode": "AS",
+    "airlineName": "Alaska Airlines"
+  },
+  {
+    "airlineCode": "FL",
+    "airlineName": "Air Tran"
+  },
+  {
+    "airlineCode": "AA",
+    "airlineName": "American Airlines"
+  },
+  {
+    "airlineCode": "DL",                                                                           
+    "airlineName": "Delta Airlines"
+  },
+  {
+    "airlineCode": "F9",
+    "airlineName": "Frontier Airlines"
+  },
+  {
+    "airlineCode": "HA",
+    "airlineName": "Hawaiian Airlines"
+  },
+  {
+    "airlineCode": "7L",
+    "airlineName": "AB Airlines"
+  },
+  {
+    "airlineCode": "ZA",
+    "airlineName": "AccessAir"
+  },
+  {
+    "airlineCode": "VX",
+    "airlineName": "ACES Colombia"
+  },
+  {
+    "airlineCode": "XQ",
+    "airlineName": "Action Airlines"
+  },
+  {
+    "airlineCode": "WZ",
+    "airlineName": "Acvilla Air – Aor Romanian Carrier"
+  },
+  {
+    "airlineCode": "ZY",
+    "airlineName": "Ade Air Albania"
+  },
+  {
+    "airlineCode": "JP",
+    "airlineName": "Adria Airways"
+  },
+  {
+    "airlineCode": "4G",
+    "airlineName": "Advance Leasing"
+  },
+  {
+    "airlineCode": "RE",
+    "airlineName": "Aer Arann"
+  },
+  {
+    "airlineCode": "EI",
+    "airlineName": "Aer Lingus"
+  },
+  {
+    "airlineCode": "E4",
+    "airlineName": "Aero Asia International"
+  },
+  {
+    "airlineCode": "N6",
+    "airlineName": "Aero Continente"
+  },
+  {
+    "airlineCode": "YP",
+    "airlineName": "Aero Lloyd"
+  },
+  {
+    "airlineCode": "UJ",
+    "airlineName": "Aero Santa"
+  },
+  {
+    "airlineCode": "W4",
+    "airlineName": "Aero Services Executive"
+  },
+  {
+    "airlineCode": "BM",
+    "airlineName": "Aero Transporti Italiani (ATI)"
+  },
+  {
+    "airlineCode": "Z9",
+    "airlineName": "Aero Zambia"
+  },
+  {
+    "airlineCode": "JR",
+    "airlineName": "Aerocalifornia"
+  },
+  {
+    "airlineCode": "QA",
+    "airlineName": "Aerocaribe"
+  },
+  {
+    "airlineCode": "P2",
+    "airlineName": "Aerocondor"
+  },
+  {
+    "airlineCode": "SX",
+    "airlineName": "Aeroexo – Aero Ejectivo"
+  },
+  {
+    "airlineCode": "SU",
+    "airlineName": "Aeroflot"
+  },
+  {
+    "airlineCode": "AR",
+    "airlineName": "Aerolineas Argentinas"
+  },
+  {
+    "airlineCode": "N2",
+    "airlineName": "Aerolineas Internacionales"
+  },
+  {
+    "airlineCode": "EX",
+    "airlineName": "Aerolineas Santo Domingo"
+  },
+  {
+    "airlineCode": "P4",
+    "airlineName": "Aerolineas Sosa"
+  },
+  {
+    "airlineCode": "4Q",
+    "airlineName": "AeroLyon"
+  },
+  {
+    "airlineCode": "BQ",
+    "airlineName": "Aeromar"
+  },
+  {
+    "airlineCode": "VW",
+    "airlineName": "Aeromar Airlines"
+  },
+  {
+    "airlineCode": "AM",
+    "airlineName": "Aeromexico"
+  },
+  {
+    "airlineCode": "QO",
+    "airlineName": "Aeromexpress"
+  },
+  {
+    "airlineCode": "WL",
+    "airlineName": "Aeroperlas"
+  },
+  {
+    "airlineCode": "PL",
+    "airlineName": "Aeroperu"
+  },
+  {
+    "airlineCode": "VH",
+    "airlineName": "Aeropostal"
+  },
+  {
+    "airlineCode": "P5",
+    "airlineName": "Aerorepublica Colombia"
+  },
+  {
+    "airlineCode": "BF",
+    "airlineName": "Aeroservice"
+  },
+  {
+    "airlineCode": "6N",
+    "airlineName": "Aerosucre"
+  },
+  {
+    "airlineCode": "5L",
+    "airlineName": "Aerosur"
+  },
+  {
+    "airlineCode": "VV",
+    "airlineName": "Aerosweet Airlines"
+  },
+  {
+    "airlineCode": "3L",
+    "airlineName": "Africa West"
+  },
+  {
+    "airlineCode": "OY",
+    "airlineName": "African International Airways"
+  },
+  {
+    "airlineCode": "ZF",
+    "airlineName": "Aiborne of Sweden"
+  },
+  {
+    "airlineCode": "LQ",
+    "airlineName": "Aipac Airlines"
+  },
+  {
+    "airlineCode": "DP",
+    "airlineName": "Air 2000"
+  },
+  {
+    "airlineCode": "RK",
+    "airlineName": "Air Afrique"
+  },
+  {
+    "airlineCode": "H7",
+    "airlineName": "Air Alfa"
+  },
+  {
+    "airlineCode": "AH",
+    "airlineName": "Air Algerie"
+  },
+  {
+    "airlineCode": "3J",
+    "airlineName": "Air Alliance"
+  },
+  {
+    "airlineCode": "TD",
+    "airlineName": "Air Anatolia"
+  },
+  {
+    "airlineCode": "FQ",
+    "airlineName": "Air Aruba"
+  },
+  {
+    "airlineCode": "AK",
+    "airlineName": "Air Asia"
+  },
+  {
+    "airlineCode": "CC",
+    "airlineName": "Air Atlanta"
+  },
+  {
+    "airlineCode": "9A",
+    "airlineName": "Air Atlantic"
+  },
+  {
+    "airlineCode": "LU",
+    "airlineName": "Air Atlantic Dominicana"
+  },
+  {
+    "airlineCode": "QD",
+    "airlineName": "Air Atlantic Spain"
+  },
+  {
+    "airlineCode": "UU",
+    "airlineName": "Air Austral"
+  },
+  {
+    "airlineCode": "BT",
+    "airlineName": "Air Baltic"
+  },
+  {
+    "airlineCode": "ZX",
+    "airlineName": "Air BC"
+  },
+  {
+    "airlineCode": "AJ",
+    "airlineName": "Air Belgium International"
+  },
+  {
+    "airlineCode": "AB",
+    "airlineName": "Air Berlin"
+  },
+  {
+    "airlineCode": "JA",
+    "airlineName": "Air Bosna"
+  },
+  {
+    "airlineCode": "KF",
+    "airlineName": "Air Botnia"
+  },
+  {
+    "airlineCode": "BP",
+    "airlineName": "Air Botswana"
+  },
+  {
+    "airlineCode": "2J",
+    "airlineName": "Air Burkina"
+  },
+  {
+    "airlineCode": "TY",
+    "airlineName": "Air Caledonie"
+  },
+  {
+    "airlineCode": "SB",
+    "airlineName": "Air Caledonie International"
+  },
+  {
+    "airlineCode": "AC",
+    "airlineName": "Air Canada"
+  },
+  {
+    "airlineCode": "WS",
+    "airlineName": "Air Caraibes"
+  },
+  {
+    "airlineCode": "3K",
+    "airlineName": "Air Cargo Express"
+  },
+  {
+    "airlineCode": "C2",
+    "airlineName": "Air Carribean"
+  },
+  {
+    "airlineCode": "XC",
+    "airlineName": "Air Carribean – CLTM Airlines"
+  },
+  {
+    "airlineCode": "CV",
+    "airlineName": "Air Chathams"
+  },
+  {
+    "airlineCode": "CA",
+    "airlineName": "Air China"
+  },
+  {
+    "airlineCode": "4F",
+    "airlineName": "Air City"
+  },
+  {
+    "airlineCode": "2Z",
+    "airlineName": "Air Comet"
+  },
+  {
+    "airlineCode": "AG",
+    "airlineName": "Air Contracors"
+  },
+  {
+    "airlineCode": "YN",
+    "airlineName": "Air Creebec"
+  },
+  {
+    "airlineCode": "2N",
+    "airlineName": "Air d’Ayiti"
+  },
+  {
+    "airlineCode": "C7",
+    "airlineName": "Air Direct"
+  },
+  {
+    "airlineCode": "DY",
+    "airlineName": "Air Djibouti – Red Sea Airlines"
+  },
+  {
+    "airlineCode": "EN",
+    "airlineName": "Air Dolomiti"
+  },
+  {
+    "airlineCode": "K5",
+    "airlineName": "Air East Africa"
+  },
+  {
+    "airlineCode": "UX",
+    "airlineName": "Air Europa"
+  },
+  {
+    "airlineCode": "PE",
+    "airlineName": "Air Europe Italy"
+  },
+  {
+    "airlineCode": "FZ",
+    "airlineName": "Air Facilities"
+  },
+  {
+    "airlineCode": "PC",
+    "airlineName": "Air Fiji"
+  },
+  {
+    "airlineCode": "FD",
+    "airlineName": "Air Florida Express"
+  },
+  {
+    "airlineCode": "GS",
+    "airlineName": "Air Foyle"
+  },
+  {
+    "airlineCode": "AF",
+    "airlineName": "Air France"
+  },
+  {
+    "airlineCode": "GN",
+    "airlineName": "Air Gabon"
+  },
+  {
+    "airlineCode": "DA",
+    "airlineName": "Air Georgia"
+  },
+  {
+    "airlineCode": "GB",
+    "airlineName": "Air Glaciers"
+  },
+  {
+    "airlineCode": "JG",
+    "airlineName": "Air Greece"
+  },
+  {
+    "airlineCode": "TX",
+    "airlineName": "Air Guadeloupe"
+  },
+  {
+    "airlineCode": "GG",
+    "airlineName": "Air Holland"
+  },
+  {
+    "airlineCode": "LD",
+    "airlineName": "Air Hong Kong"
+  },
+  {
+    "airlineCode": "NY",
+    "airlineName": "Air Iceland – Flugfelag Islands"
+  },
+  {
+    "airlineCode": "AI",
+    "airlineName": "Air India"
+  },
+  {
+    "airlineCode": "IT",
+    "airlineName": "Air Inter"
+  },
+  {
+    "airlineCode": "3H",
+    "airlineName": "Air Inuit"
+  },
+  {
+    "airlineCode": "VU",
+    "airlineName": "Air ivoire"
+  },
+  {
+    "airlineCode": "JM",
+    "airlineName": "Air Jamaica"
+  },
+  {
+    "airlineCode": "BC",
+    "airlineName": "Air Jet"
+  },
+  {
+    "airlineCode": "9Y",
+    "airlineName": "Air Kazakstan"
+  },
+  {
+    "airlineCode": "QP",
+    "airlineName": "Air Kenya Aviation"
+  },
+  {
+    "airlineCode": "JS",
+    "airlineName": "Air Koryo"
+  },
+  {
+    "airlineCode": "UE",
+    "airlineName": "Air L.A."
+  },
+  {
+    "airlineCode": "WJ",
+    "airlineName": "Air Labrador – Labrador Airways"
+  },
+  {
+    "airlineCode": "VD",
+    "airlineName": "Air Liberte"
+  },
+  {
+    "airlineCode": "DR",
+    "airlineName": "Air Link"
+  },
+  {
+    "airlineCode": "TT",
+    "airlineName": "Air Lithuania"
+  },
+  {
+    "airlineCode": "FU",
+    "airlineName": "Air Littoral"
+  },
+  {
+    "airlineCode": "NX",
+    "airlineName": "Air Macau"
+  },
+  {
+    "airlineCode": "MD",
+    "airlineName": "Air Madagascar"
+  },
+  {
+    "airlineCode": "QM",
+    "airlineName": "Air Malawi"
+  },
+  {
+    "airlineCode": "L6",
+    "airlineName": "Air Maldives"
+  },
+  {
+    "airlineCode": "L9",
+    "airlineName": "Air Mali"
+  },
+  {
+    "airlineCode": "KM",
+    "airlineName": "Air Malta"
+  },
+  {
+    "airlineCode": "6T",
+    "airlineName": "Air mandalay"
+  },
+  {
+    "airlineCode": "CW",
+    "airlineName": "Air Marshall Islands"
+  },
+  {
+    "airlineCode": "MR",
+    "airlineName": "Air Mauritanie"
+  },
+  {
+    "airlineCode": "MK",
+    "airlineName": "Air Mauritius"
+  },
+  {
+    "airlineCode": "9U",
+    "airlineName": "Air Moldova"
+  },
+  {
+    "airlineCode": "3R",
+    "airlineName": "Air Moldova International"
+  },
+  {
+    "airlineCode": "F8",
+    "airlineName": "Air Montreal"
+  },
+  {
+    "airlineCode": "SW",
+    "airlineName": "Air Namibia"
+  },
+  {
+    "airlineCode": "ON",
+    "airlineName": "Air Nauru"
+  },
+  {
+    "airlineCode": "5T",
+    "airlineName": "Air Negril"
+  },
+  {
+    "airlineCode": "NZ",
+    "airlineName": "Air New Zealand/Mt Cook Line"
+  },
+  {
+    "airlineCode": "EL",
+    "airlineName": "Air Nippon"
+  },
+  {
+    "airlineCode": "PX",
+    "airlineName": "Air Niugini"
+  },
+  {
+    "airlineCode": "4N",
+    "airlineName": "Air North Charter"
+  },
+  {
+    "airlineCode": "TL",
+    "airlineName": "Air North Regional"
+  },
+  {
+    "airlineCode": "YW",
+    "airlineName": "Air Nostrum"
+  },
+  {
+    "airlineCode": "QK",
+    "airlineName": "Air Nova"
+  },
+  {
+    "airlineCode": "9Q",
+    "airlineName": "Air One"
+  },
+  {
+    "airlineCode": "AP",
+    "airlineName": "Air One"
+  },
+  {
+    "airlineCode": "GX",
+    "airlineName": "Air Ontario"
+  },
+  {
+    "airlineCode": "UT",
+    "airlineName": "Air Orient"
+  },
+  {
+    "airlineCode": "8K",
+    "airlineName": "Air Ostrava"
+  },
+  {
+    "airlineCode": "FJ",
+    "airlineName": "Air Pacific"
+  },
+  {
+    "airlineCode": "2P",
+    "airlineName": "Air Philippines"
+  },
+  {
+    "airlineCode": "OB",
+    "airlineName": "Air Plus"
+  },
+  {
+    "airlineCode": "DG",
+    "airlineName": "Air Provence Interionational"
+  },
+  {
+    "airlineCode": "GZ",
+    "airlineName": "Air Roratonga"
+  },
+  {
+    "airlineCode": "ZJ",
+    "airlineName": "Air Routing International"
+  },
+  {
+    "airlineCode": "S6",
+    "airlineName": "Air Saint Martin"
+  },
+  {
+    "airlineCode": "PJ",
+    "airlineName": "Air Saint Pierre"
+  },
+  {
+    "airlineCode": "ZP",
+    "airlineName": "Air Saint Thomas"
+  },
+  {
+    "airlineCode": "HM",
+    "airlineName": "Air Seychelles"
+  },
+  {
+    "airlineCode": "4D",
+    "airlineName": "Air Sinai"
+  },
+  {
+    "airlineCode": "GM",
+    "airlineName": "Air Slovakia"
+  },
+  {
+    "airlineCode": "CT",
+    "airlineName": "Air Sofia"
+  },
+  {
+    "airlineCode": "GO",
+    "airlineName": "Air Stord"
+  },
+  {
+    "airlineCode": "0O",
+    "airlineName": "Air Sultan"
+  },
+  {
+    "airlineCode": "YI",
+    "airlineName": "Air Sunshine"
+  },
+  {
+    "airlineCode": "VT",
+    "airlineName": "Air Tahiti"
+  },
+  {
+    "airlineCode": "TN",
+    "airlineName": "Air Tahiti NUI"
+  },
+  {
+    "airlineCode": "TC",
+    "airlineName": "Air Tanzania"
+  },
+  {
+    "airlineCode": "8W",
+    "airlineName": "Air Team"
+  },
+  {
+    "airlineCode": "SH",
+    "airlineName": "Air Toulouse International"
+  },
+  {
+    "airlineCode": "TS",
+    "airlineName": "Air Transat"
+  },
+  {
+    "airlineCode": "8C",
+    "airlineName": "Air Transport Int’l – ATI"
+  },
+  {
+    "airlineCode": "8T",
+    "airlineName": "Air Trindi"
+  },
+  {
+    "airlineCode": "UK",
+    "airlineName": "Air UK"
+  },
+  {
+    "airlineCode": "6U",
+    "airlineName": "Air Ukraine"
+  },
+  {
+    "airlineCode": "3N",
+    "airlineName": "Air Urga"
+  },
+  {
+    "airlineCode": "DO",
+    "airlineName": "Air Vallee"
+  },
+  {
+    "airlineCode": "NF",
+    "airlineName": "Air Vanuatu"
+  },
+  {
+    "airlineCode": "6V",
+    "airlineName": "Air Vegas"
+  },
+  {
+    "airlineCode": "XR",
+    "airlineName": "Air Wings"
+  },
+  {
+    "airlineCode": "ZT",
+    "airlineName": "Air Zambezi"
+  },
+  {
+    "airlineCode": "A9",
+    "airlineName": "Air Zena"
+  },
+  {
+    "airlineCode": "UM",
+    "airlineName": "Air Zimbabwe"
+  },
+  {
+    "airlineCode": "UL",
+    "airlineName": "AirLanka"
+  },
+  {
+    "airlineCode": "C4",
+    "airlineName": "Airlines of Carriacou"
+  },
+  {
+    "airlineCode": "RT",
+    "airlineName": "Airlines of South Australia"
+  },
+  {
+    "airlineCode": "ND",
+    "airlineName": "Airlink"
+  },
+  {
+    "airlineCode": "ID",
+    "airlineName": "Airmax Airlines"
+  },
+  {
+    "airlineCode": "VZ",
+    "airlineName": "Airtours International Airways"
+  },
+  {
+    "airlineCode": "FL",
+    "airlineName": "AirTran Airways"
+  },
+  {
+    "airlineCode": "E9",
+    "airlineName": "AJT Air International"
+  },
+  {
+    "airlineCode": "6L",
+    "airlineName": "Aklak"
+  },
+  {
+    "airlineCode": "LV",
+    "airlineName": "Albanian Airlines MAK"
+  },
+  {
+    "airlineCode": "D4",
+    "airlineName": "Alidaunia"
+  },
+  {
+    "airlineCode": "AZ",
+    "airlineName": "Alitalia"
+  },
+  {
+    "airlineCode": "XM",
+    "airlineName": "Alitalia Express"
+  },
+  {
+    "airlineCode": "RD",
+    "airlineName": "Alitalia Team"
+  },
+  {
+    "airlineCode": "NH",
+    "airlineName": "All Nippon Airways (ANA)"
+  },
+  {
+    "airlineCode": "LL",
+    "airlineName": "Allegro Air"
+  },
+  {
+    "airlineCode": "CD",
+    "airlineName": "Alliance Air"
+  },
+  {
+    "airlineCode": "3A",
+    "airlineName": "Alliance Airlines"
+  },
+  {
+    "airlineCode": "LM",
+    "airlineName": "ALM Antillean Airlines"
+  },
+  {
+    "airlineCode": "E8",
+    "airlineName": "Alpi Eagles"
+  },
+  {
+    "airlineCode": "5A",
+    "airlineName": "Alpine Air"
+  },
+  {
+    "airlineCode": "9V",
+    "airlineName": "AMC Aviation"
+  },
+  {
+    "airlineCode": "MO",
+    "airlineName": "Amiri Flight (Abu Dhabi)"
+  },
+  {
+    "airlineCode": "8G",
+    "airlineName": "Angel Airlines"
+  },
+  {
+    "airlineCode": "AN",
+    "airlineName": "Ansett Australia"
+  },
+  {
+    "airlineCode": "ZQ",
+    "airlineName": "Ansett New Zealand"
+  },
+  {
+    "airlineCode": "YY",
+    "airlineName": "Any carrier"
+  },
+  {
+    "airlineCode": "IW",
+    "airlineName": "AOM French Airlines"
+  },
+  {
+    "airlineCode": "7P",
+    "airlineName": "APA Internacional"
+  },
+  {
+    "airlineCode": "4A",
+    "airlineName": "Ararat Avia"
+  },
+  {
+    "airlineCode": "Y5",
+    "airlineName": "Arax Airways"
+  },
+  {
+    "airlineCode": "F5",
+    "airlineName": "Archana Airways"
+  },
+  {
+    "airlineCode": "5F",
+    "airlineName": "Arctic Circle Air Service"
+  },
+  {
+    "airlineCode": "7S",
+    "airlineName": "Arctic Transportation Services"
+  },
+  {
+    "airlineCode": "FG",
+    "airlineName": "Ariana Afghan Airlines"
+  },
+  {
+    "airlineCode": "IZ",
+    "airlineName": "Arkia Israeli Airlines"
+  },
+  {
+    "airlineCode": "R3",
+    "airlineName": "Armenian Airlines"
+  },
+  {
+    "airlineCode": "A8",
+    "airlineName": "ARPA – Aerolineas Paraguayas"
+  },
+  {
+    "airlineCode": "JW",
+    "airlineName": "Arrow Air"
+  },
+  {
+    "airlineCode": "EV",
+    "airlineName": "ASA / Delta Connection"
+  },
+  {
+    "airlineCode": "R7",
+    "airlineName": "ASERCA – Aeroservicios Carabobo"
+  },
+  {
+    "airlineCode": "HJ",
+    "airlineName": "Asian Express Airlines"
+  },
+  {
+    "airlineCode": "OZ",
+    "airlineName": "Asiana Airlines"
+  },
+  {
+    "airlineCode": "OI",
+    "airlineName": "Aspiring Air"
+  },
+  {
+    "airlineCode": "A7",
+    "airlineName": "Astanair Kazakstan"
+  },
+  {
+    "airlineCode": "2B",
+    "airlineName": "ATA Aerocondor"
+  },
+  {
+    "airlineCode": "9T",
+    "airlineName": "Athabaska Airways"
+  },
+  {
+    "airlineCode": "3G",
+    "airlineName": "Atlant Soyuz Airlines"
+  },
+  {
+    "airlineCode": "RC",
+    "airlineName": "Atlantic Airways"
+  },
+  {
+    "airlineCode": "DH",
+    "airlineName": "Atlantic Coast Airlines"
+  },
+  {
+    "airlineCode": "5Y",
+    "airlineName": "Atlas Air"
+  },
+  {
+    "airlineCode": "V8",
+    "airlineName": "ATRAN – Aviatrans Cargo Airlines"
+  },
+  {
+    "airlineCode": "IQ",
+    "airlineName": "Augsburg Airways"
+  },
+  {
+    "airlineCode": "GR",
+    "airlineName": "Aurigny Air Services"
+  },
+  {
+    "airlineCode": "NO",
+    "airlineName": "Aus Air"
+  },
+  {
+    "airlineCode": "AU",
+    "airlineName": "Austral Lineas Aereas"
+  },
+  {
+    "airlineCode": "OS",
+    "airlineName": "Austrian Airlines"
+  },
+  {
+    "airlineCode": "OT",
+    "airlineName": "Avant Airlines"
+  },
+  {
+    "airlineCode": "VE",
+    "airlineName": "Avensa"
+  },
+  {
+    "airlineCode": "RX",
+    "airlineName": "Avia Express"
+  },
+  {
+    "airlineCode": "AO",
+    "airlineName": "Aviaco"
+  },
+  {
+    "airlineCode": "6A",
+    "airlineName": "Aviacsa"
+  },
+  {
+    "airlineCode": "AV",
+    "airlineName": "Avianca"
+  },
+  {
+    "airlineCode": "GU",
+    "airlineName": "Aviateca (Guatemala)"
+  },
+  {
+    "airlineCode": "M4",
+    "airlineName": "Avioimpex Makedonija Airways"
+  },
+  {
+    "airlineCode": "3B",
+    "airlineName": "AVIOR – Aviones de Oriente"
+  },
+  {
+    "airlineCode": "DF",
+    "airlineName": "Aviosarda Airlines"
+  },
+  {
+    "airlineCode": "J2",
+    "airlineName": "Azerbaijan Airlines"
+  },
+  {
+    "airlineCode": "ZS",
+    "airlineName": "Azzurra Air"
+  },
+  {
+    "airlineCode": "UP",
+    "airlineName": "Bahamasair"
+  },
+  {
+    "airlineCode": "X3",
+    "airlineName": "Baikal Airlines"
+  },
+  {
+    "airlineCode": "8Q",
+    "airlineName": "Baker Aviation"
+  },
+  {
+    "airlineCode": "BB",
+    "airlineName": "Balair/CTA Leisure"
+  },
+  {
+    "airlineCode": "LZ",
+    "airlineName": "Balkan Bulgarian Airlines"
+  },
+  {
+    "airlineCode": "TI",
+    "airlineName": "Baltic International Airlines"
+  },
+  {
+    "airlineCode": "PG",
+    "airlineName": "Bangkok Airways"
+  },
+  {
+    "airlineCode": "B4",
+    "airlineName": "Bankair"
+  },
+  {
+    "airlineCode": "5E",
+    "airlineName": "BASE Airlines"
+  },
+  {
+    "airlineCode": "V9",
+    "airlineName": "Bashkirian Airlines"
+  },
+  {
+    "airlineCode": "6B",
+    "airlineName": "Baxter Aviation"
+  },
+  {
+    "airlineCode": "JV",
+    "airlineName": "Bearskin Airlines"
+  },
+  {
+    "airlineCode": "BL",
+    "airlineName": "Belair Ile de France"
+  },
+  {
+    "airlineCode": "B2",
+    "airlineName": "Belavia"
+  },
+  {
+    "airlineCode": "7G",
+    "airlineName": "Bellair"
+  },
+  {
+    "airlineCode": "B3",
+    "airlineName": "Bellview Airlines"
+  },
+  {
+    "airlineCode": "CH",
+    "airlineName": "Bemidji Airlines"
+  },
+  {
+    "airlineCode": "8E",
+    "airlineName": "Bering Air"
+  },
+  {
+    "airlineCode": "J8",
+    "airlineName": "Berjaya Air"
+  },
+  {
+    "airlineCode": "B1",
+    "airlineName": "Besit Servizi Aerei"
+  },
+  {
+    "airlineCode": "BG",
+    "airlineName": "Biman Bangladesh Airlines"
+  },
+  {
+    "airlineCode": "NT",
+    "airlineName": "Binter Canarias"
+  },
+  {
+    "airlineCode": "AX",
+    "airlineName": "Binter Mediterraneo"
+  },
+  {
+    "airlineCode": "BO",
+    "airlineName": "Bouraq Indonesia Airlines"
+  },
+  {
+    "airlineCode": "BU",
+    "airlineName": "Braathens"
+  },
+  {
+    "airlineCode": "6E",
+    "airlineName": "Indigo"
+  },
+  {
+    "airlineCode": "DB",
+    "airlineName": "Britair"
+  },
+  {
+    "airlineCode": "BY",
+    "airlineName": "Britannia Airways"
+  },
+  {
+    "airlineCode": "BN",
+    "airlineName": "Britannia Airways Deutschland"
+  },
+  {
+    "airlineCode": "BA",
+    "airlineName": "British Airways"
+  },
+  {
+    "airlineCode": "BS",
+    "airlineName": "British International Helicopters"
+  },
+  {
+    "airlineCode": "KJ",
+    "airlineName": "British Mediterranean Airways"
+  },
+  {
+    "airlineCode": "BD",
+    "airlineName": "British Midland"
+  },
+  {
+    "airlineCode": "TH",
+    "airlineName": "British Regional Airlines"
+  },
+  {
+    "airlineCode": "VF",
+    "airlineName": "British World Airlines"
+  },
+  {
+    "airlineCode": "J4",
+    "airlineName": "Buffalo Airways"
+  },
+  {
+    "airlineCode": "DU",
+    "airlineName": "Bulgarian Aviation/Hemus Air"
+  },
+  {
+    "airlineCode": "HQ",
+    "airlineName": "Business Express Airlines – BEX"
+  },
+  {
+    "airlineCode": "BW",
+    "airlineName": "Bwia International Airways"
+  },
+  {
+    "airlineCode": "R9",
+    "airlineName": "Camai Air"
+  },
+  {
+    "airlineCode": "XE",
+    "airlineName": "Cambodian Int’l Airlines"
+  },
+  {
+    "airlineCode": "UY",
+    "airlineName": "Cameroon Airlines"
+  },
+  {
+    "airlineCode": "CP",
+    "airlineName": "Canadian Airlines Int’l"
+  },
+  {
+    "airlineCode": "FW",
+    "airlineName": "Canarias Regional Air"
+  },
+  {
+    "airlineCode": "6C",
+    "airlineName": "Cape Smythe Air Service"
+  },
+  {
+    "airlineCode": "NS",
+    "airlineName": "Cape York Air"
+  },
+  {
+    "airlineCode": "PT",
+    "airlineName": "Capital Cargo International Airlines"
+  },
+  {
+    "airlineCode": "NN",
+    "airlineName": "Cardinal Airlines"
+  },
+  {
+    "airlineCode": "K7",
+    "airlineName": "Carib Aviation"
+  },
+  {
+    "airlineCode": "XP",
+    "airlineName": "Casino Express"
+  },
+  {
+    "airlineCode": "CX",
+    "airlineName": "Cathay Pacific Airways"
+  },
+  {
+    "airlineCode": "KX",
+    "airlineName": "Cayman Airways"
+  },
+  {
+    "airlineCode": "5J",
+    "airlineName": "Cebu Pacific Air"
+  },
+  {
+    "airlineCode": "9M",
+    "airlineName": "Central Mountain Air"
+  },
+  {
+    "airlineCode": "GC",
+    "airlineName": "Centralafrican Airlines"
+  },
+  {
+    "airlineCode": "OP",
+    "airlineName": "Chalk’s International Airline"
+  },
+  {
+    "airlineCode": "WE",
+    "airlineName": "Challenge Air Cargo"
+  },
+  {
+    "airlineCode": "MG",
+    "airlineName": "Champion Air"
+  },
+  {
+    "airlineCode": "LS",
+    "airlineName": "Channel Express"
+  },
+  {
+    "airlineCode": "H6",
+    "airlineName": "Chelal – Chelyabinsk Air Enterprise"
+  },
+  {
+    "airlineCode": "CI",
+    "airlineName": "China Airlines"
+  },
+  {
+    "airlineCode": "MU",
+    "airlineName": "China Eastern Airlines"
+  },
+  {
+    "airlineCode": "F6",
+    "airlineName": "China National Aviation Corporation"
+  },
+  {
+    "airlineCode": "CJ",
+    "airlineName": "China Northern Airlines"
+  },
+  {
+    "airlineCode": "WH",
+    "airlineName": "China Northwest Airlines"
+  },
+  {
+    "airlineCode": "CZ",
+    "airlineName": "China Southern Airlines"
+  },
+  {
+    "airlineCode": "SZ",
+    "airlineName": "China Southwest Airlines"
+  },
+  {
+    "airlineCode": "XO",
+    "airlineName": "China Xinjiang Airlines"
+  },
+  {
+    "airlineCode": "3Q",
+    "airlineName": "China Yunnan Airlines"
+  },
+  {
+    "airlineCode": "X7",
+    "airlineName": "Chitaavia"
+  },
+  {
+    "airlineCode": "QI",
+    "airlineName": "Cimber Air"
+  },
+  {
+    "airlineCode": "FO",
+    "airlineName": "Circle Air Freight"
+  },
+  {
+    "airlineCode": "C9",
+    "airlineName": "Cirrus Airlines"
+  },
+  {
+    "airlineCode": "H2",
+    "airlineName": "City Bird Airlines"
+  },
+  {
+    "airlineCode": "WX",
+    "airlineName": "Cityjet"
+  },
+  {
+    "airlineCode": "BX",
+    "airlineName": "Coast Air"
+  },
+  {
+    "airlineCode": "DQ",
+    "airlineName": "Coastal Air Transport"
+  },
+  {
+    "airlineCode": "9L",
+    "airlineName": "Colgan Air"
+  },
+  {
+    "airlineCode": "7C",
+    "airlineName": "Columbia Pacific Airlines"
+  },
+  {
+    "airlineCode": "MN",
+    "airlineName": "Comair"
+  },
+  {
+    "airlineCode": "XK",
+    "airlineName": "Compagnie Corse Mediterranee"
+  },
+  {
+    "airlineCode": "DE",
+    "airlineName": "Condor"
+  },
+  {
+    "airlineCode": "EO",
+    "airlineName": "Congo Airlines – CAL"
+  },
+  {
+    "airlineCode": "CQ",
+    "airlineName": "Constellation International Airlines"
+  },
+  {
+    "airlineCode": "CS",
+    "airlineName": "Continental Micronesia"
+  },
+  {
+    "airlineCode": "CM",
+    "airlineName": "COPA Panama"
+  },
+  {
+    "airlineCode": "3C",
+    "airlineName": "Corporate Airlines"
+  },
+  {
+    "airlineCode": "SS",
+    "airlineName": "Corsair"
+  },
+  {
+    "airlineCode": "ZE",
+    "airlineName": "Cosmos Air"
+  },
+  {
+    "airlineCode": "XL",
+    "airlineName": "Country Connection Airlines"
+  },
+  {
+    "airlineCode": "OR",
+    "airlineName": "Crimea Air"
+  },
+  {
+    "airlineCode": "OU",
+    "airlineName": "Croatia Airlines"
+  },
+  {
+    "airlineCode": "X5",
+    "airlineName": "Cronus Airlines"
+  },
+  {
+    "airlineCode": "LX",
+    "airlineName": "Crossair"
+  },
+  {
+    "airlineCode": "QE",
+    "airlineName": "Crossair Europe"
+  },
+  {
+    "airlineCode": "CU",
+    "airlineName": "Cubana"
+  },
+  {
+    "airlineCode": "CY",
+    "airlineName": "Cyprus Airways"
+  },
+  {
+    "airlineCode": "OK",
+    "airlineName": "Czechoslovak Airlines"
+  },
+  {
+    "airlineCode": "D3",
+    "airlineName": "Daallo Airlines"
+  },
+  {
+    "airlineCode": "D2",
+    "airlineName": "Damania Airways"
+  },
+  {
+    "airlineCode": "DX",
+    "airlineName": "Danish Air Transport"
+  },
+  {
+    "airlineCode": "AW",
+    "airlineName": "DAS – Dirgantara Air Service"
+  },
+  {
+    "airlineCode": "SE",
+    "airlineName": "DAS Air Cargo"
+  },
+  {
+    "airlineCode": "2G",
+    "airlineName": "Debonair Airways"
+  },
+  {
+    "airlineCode": "DI",
+    "airlineName": "Deutsche BA"
+  },
+  {
+    "airlineCode": "DV",
+    "airlineName": "Deutsche Rettungsflugwacht"
+  },
+  {
+    "airlineCode": "DS",
+    "airlineName": "DHL Aero Expreso"
+  },
+  {
+    "airlineCode": "ER",
+    "airlineName": "DHL Airways"
+  },
+  {
+    "airlineCode": "Z8",
+    "airlineName": "DHL de Guatemala"
+  },
+  {
+    "airlineCode": "ES",
+    "airlineName": "DHL International EC"
+  },
+  {
+    "airlineCode": "9X",
+    "airlineName": "Diamond International Airlines"
+  },
+  {
+    "airlineCode": "D8",
+    "airlineName": "Diamond Sakha Airlines"
+  },
+  {
+    "airlineCode": "D7",
+    "airlineName": "Dinar Lineas Aereas"
+  },
+  {
+    "airlineCode": "Z6",
+    "airlineName": "Dnieproavia Aviation Company"
+  },
+  {
+    "airlineCode": "YU",
+    "airlineName": "Dominair – Aerolineas Dominicanas"
+  },
+  {
+    "airlineCode": "E3",
+    "airlineName": "Domodedovo Airlines"
+  },
+  {
+    "airlineCode": "D9",
+    "airlineName": "Donavia"
+  },
+  {
+    "airlineCode": "7D",
+    "airlineName": "Donbass Eastern Ukranian Airlines"
+  },
+  {
+    "airlineCode": "KA",
+    "airlineName": "DragonAir"
+  },
+  {
+    "airlineCode": "5D",
+    "airlineName": "Dutchbird"
+  },
+  {
+    "airlineCode": "ZN",
+    "airlineName": "Eagle Airlines"
+  },
+  {
+    "airlineCode": "Y4",
+    "airlineName": "Eagle Aviation"
+  },
+  {
+    "airlineCode": "FE",
+    "airlineName": "Eagle Canyon Airlines"
+  },
+  {
+    "airlineCode": "P7",
+    "airlineName": "East Line Airlines"
+  },
+  {
+    "airlineCode": "DK",
+    "airlineName": "Eastland Air – Moores Air Charter"
+  },
+  {
+    "airlineCode": "W9",
+    "airlineName": "Eastwind Airlines"
+  },
+  {
+    "airlineCode": "U2",
+    "airlineName": "EasyJet Airlines"
+  },
+  {
+    "airlineCode": "BH",
+    "airlineName": "Easyjet Switzerland"
+  },
+  {
+    "airlineCode": "EU",
+    "airlineName": "Ecuatoriana"
+  },
+  {
+    "airlineCode": "ED",
+    "airlineName": "Edelweiss Air"
+  },
+  {
+    "airlineCode": "MS",
+    "airlineName": "Egyptair"
+  },
+  {
+    "airlineCode": "LY",
+    "airlineName": "EL AL (Israel)"
+  },
+  {
+    "airlineCode": "S8",
+    "airlineName": "ELK Airways Estonian Aviation"
+  },
+  {
+    "airlineCode": "G3",
+    "airlineName": "Emerald Airways"
+  },
+  {
+    "airlineCode": "EB",
+    "airlineName": "Emery Worldwide Airlines"
+  },
+  {
+    "airlineCode": "EK",
+    "airlineName": "Emirates"
+  },
+  {
+    "airlineCode": "EM",
+    "airlineName": "Empire Airlines"
+  },
+  {
+    "airlineCode": "5Z",
+    "airlineName": "Enkor"
+  },
+  {
+    "airlineCode": "8H",
+    "airlineName": "Equaflight Service"
+  },
+  {
+    "airlineCode": "7H",
+    "airlineName": "ERA Aviation"
+  },
+  {
+    "airlineCode": "OV",
+    "airlineName": "Estonian Air"
+  },
+  {
+    "airlineCode": "ET",
+    "airlineName": "Ethiopian Airlines"
+  },
+  {
+    "airlineCode": "RN",
+    "airlineName": "Euralair International"
+  },
+  {
+    "airlineCode": "F4",
+    "airlineName": "Eureca"
+  },
+  {
+    "airlineCode": "GJ",
+    "airlineName": "Eurofly"
+  },
+  {
+    "airlineCode": "Y6",
+    "airlineName": "Europe Elite"
+  },
+  {
+    "airlineCode": "QY",
+    "airlineName": "European Air Transport – EAT"
+  },
+  {
+    "airlineCode": "EA",
+    "airlineName": "European Regions Airlines – ERA"
+  },
+  {
+    "airlineCode": "MY",
+    "airlineName": "Euroscot Express Airways"
+  },
+  {
+    "airlineCode": "EW",
+    "airlineName": "Eurowings"
+  },
+  {
+    "airlineCode": "BR",
+    "airlineName": "EVA Air"
+  },
+  {
+    "airlineCode": "EZ",
+    "airlineName": "Evergreen International Airlines"
+  },
+  {
+    "airlineCode": "MB",
+    "airlineName": "Execaire Aviation"
+  },
+  {
+    "airlineCode": "5W",
+    "airlineName": "Executive Express"
+  },
+  {
+    "airlineCode": "1L",
+    "airlineName": "Executive Jet Aviation"
+  },
+  {
+    "airlineCode": "8D",
+    "airlineName": "Expo Airlines"
+  },
+  {
+    "airlineCode": "IH",
+    "airlineName": "Falcon Air"
+  },
+  {
+    "airlineCode": "F2",
+    "airlineName": "Falcon Air Express"
+  },
+  {
+    "airlineCode": "FC",
+    "airlineName": "Falcon Express Air Cargo"
+  },
+  {
+    "airlineCode": "EF",
+    "airlineName": "Far Eastern Air Transport"
+  },
+  {
+    "airlineCode": "UD",
+    "airlineName": "Fast Air"
+  },
+  {
+    "airlineCode": "CF",
+    "airlineName": "Faucett Airlines (Peru)"
+  },
+  {
+    "airlineCode": "2D",
+    "airlineName": "Federico II Airways"
+  },
+  {
+    "airlineCode": "FM",
+    "airlineName": "FedEx – Federall Express"
+  },
+  {
+    "airlineCode": "FX",
+    "airlineName": "FedEx – Federall Express"
+  },
+  {
+    "airlineCode": "HG",
+    "airlineName": "Fika Salaama Airlines"
+  },
+  {
+    "airlineCode": "FB",
+    "airlineName": "Fine Airlines"
+  },
+  {
+    "airlineCode": "AY",
+    "airlineName": "Finnair"
+  },
+  {
+    "airlineCode": "7F",
+    "airlineName": "First Air"
+  },
+  {
+    "airlineCode": "8F",
+    "airlineName": "Fischer Air"
+  },
+  {
+    "airlineCode": "IX",
+    "airlineName": "Flandre Air"
+  },
+  {
+    "airlineCode": "YC",
+    "airlineName": "Flight West Airlines"
+  },
+  {
+    "airlineCode": "RF",
+    "airlineName": "Florida West Airlines"
+  },
+  {
+    "airlineCode": "FT",
+    "airlineName": "Fly FTI"
+  },
+  {
+    "airlineCode": "MT",
+    "airlineName": "Flying Colours Airlines"
+  },
+  {
+    "airlineCode": "F3",
+    "airlineName": "Flying Enterprise"
+  },
+  {
+    "airlineCode": "HK",
+    "airlineName": "Four Star Air Cargo"
+  }
+]

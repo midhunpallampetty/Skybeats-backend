@@ -10,7 +10,8 @@ const hotelBookingSchema=new mongoose.Schema({
     hotelName:String,
     hotelLocation:String,
     createdAt:{type:String,default:new Date()},
-    userId:{type:String}
+    userId:{type:String},
+    cancelled:{type:Boolean,default:false}
 
 })
 export const hotelBookingModel=mongoose.model('HotelBooking',hotelBookingSchema);

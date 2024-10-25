@@ -30,17 +30,17 @@ const hotelBookingResolver = {
     
   },
   Query:{
-    getAllHotelBooking:async()=>{
-      try{
-        const bookings=await hotelBookingModel.find()
+    getAllHotelBooking: async (_: {}, { userId }: { userId: String }) => {
+      try {
+        const bookings = await hotelBookingModel.find({ userId }); // Correct usage of find
         return bookings;
-      }catch(error){
-        console.log('error fetching booking data')
+      } catch (error) {
+        console.log('Error fetching booking data:', error); // Better logging of the actual error
         throw new Error('Error while getting data from booking service');
-
       }
     }
+    
   },
-};
+};                                                                                                                    
 
 export default hotelBookingResolver;
