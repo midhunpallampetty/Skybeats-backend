@@ -19,6 +19,8 @@ import googleLoginResolver from "./googleLoginResolver";
 import transactionTypedefs from "./transactionResolver";
 import getGoogleResolver from "./getGoogleResolver";
 import cancelHotelResolver from "./cancelHotelBooking";
+import optionalFoodResolver from "./optionalFoodResolver";
+import passengerInfoResolver from "./passengerInfoResolver";
 
-const resolvers=mergeResolvers([userResolver,getGoogleResolver,cancelHotelResolver,transactionTypedefs,cloudImageResolver,googleLoginResolver,cancelBookingResolver,returnFlightResolver,profileDetailResolver,flightDetailsResolver,checkSeatsResolver,applyJobResolver,cargoResolver,flightResolvers,careerResolver,adminResolver,hotelResolvers,hotelBookingResolver,seatResolvers,flightBookingResolver]);
+const resolvers=mergeResolvers([userResolver,passengerInfoResolver,getGoogleResolver,optionalFoodResolver,cancelHotelResolver,transactionTypedefs,cloudImageResolver,googleLoginResolver,cancelBookingResolver,returnFlightResolver,profileDetailResolver,flightDetailsResolver,checkSeatsResolver,applyJobResolver,cargoResolver,flightResolvers,careerResolver,adminResolver,hotelResolvers,hotelBookingResolver,seatResolvers,flightBookingResolver]);
 export default resolvers;

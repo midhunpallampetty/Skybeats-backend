@@ -26,6 +26,7 @@ const cancelBookingTypedef = gql`
 
   type Mutation {
     CancelTicketById(BookingId: String!): BookingDetails
+    CancelTicketByOne(BookingId:String!,seatNumber:String!):BookingDetails
   }
 `;
 

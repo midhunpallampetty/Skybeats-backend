@@ -10,7 +10,11 @@ const cargoSchema = new mongoose.Schema({
   Weight:{type:Number},
   trackingId:{type:String},
   rejected:{type:Boolean},
-  userId:{type:String}
+  userId:{type:String},
+  height:{type:Number},
+  width:{type:String},
+  StartLocation:{type:String},
+  Destination:{type:String}
 });
 
 export const cargoModel = mongoose.model('Cargo', cargoSchema);

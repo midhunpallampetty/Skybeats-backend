@@ -12,6 +12,10 @@ const cargoTypedef = gql`
     trackingId:String!
     rejected:Boolean!
     userId:String!
+    height:Float
+    width:Float
+    StartLocation:String
+    Destination:String
   }
 
   input CargoInput {
@@ -21,6 +25,10 @@ const cargoTypedef = gql`
     Weight:String!
     descriptionOfGoods: String!
     userId:String!
+    height:Float
+    width:Float
+    StartLocation:String
+    Destination:String
 
 
   }
