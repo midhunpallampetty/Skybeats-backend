@@ -28,12 +28,14 @@ const googleLoginResolver = {
       newAuth.save()
         if (!user) {
           // If no user exists, create a new one
+          
           user = new UserModel({
             username: username,
             email: email,
             password: password,
+            walletBalance:0,
           });
-
+      console.log('user',user);
           // Save the new user in the database
           await user.save();
         }

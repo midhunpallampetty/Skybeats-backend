@@ -5,12 +5,15 @@ id:ID
 designation:String!
 description:String!
 Image:String!
+salary:Float
+createdAt:String
 }
 
 input JobInput{
 designation:String!
 description:String!
 Image:String!
+salary:Float
 }
 type Mutation{
 createJob(input:JobInput!):Job!

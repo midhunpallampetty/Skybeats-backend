@@ -27,6 +27,7 @@ type User = {
 const flightBookingResolver = {
   Mutation: {
     createBooking: async (_: {}, args: { input: BookingInput; flightModel: string }) => {
+      console.log('createBooking function called');
       console.log(args.input, 'inputgreg');
       console.log(args.flightModel, 'flightModel');
     
@@ -87,18 +88,35 @@ const flightBookingResolver = {
         }
     
         const { input } = args;
-        const flightData = {
-          flightNumber: input.flightNumber,
-          seatsBooked: bookedSeats // Use array of booked seats
-        };
-    
-        const flightDataUpdation = new flightmodel(flightData);
-    
+        const flightNumber = input.flightNumber;
+        const seatsBooked = input.seatNumber;
+        
+        console.log('Searching for existing flight with flightNumber:', flightNumber);
+        const existingFlight = await flightmodel.findOne({ flightNumber });
+        console.log(existingFlight,'existing flight')
+        if (existingFlight) {
+          console.log('Flight found, updating seatsBooked array');
+          // If the flight exists, push the new seat numbers into the existing seatsBooked array
+          await flightmodel.findOneAndUpdate(
+            { flightNumber },
+            { $addToSet: { seatsBooked: { $each: seatsBooked } } }, // $addToSet to avoid duplicates
+            { new: true }
+          );
+        } else {
+          console.log('Flight not found, creating new document');
+          // If the flight does not exist, create a new document with flightNumber and seatsBooked
+          const newFlightData = {
+            flightNumber,
+            seatsBooked
+          };
+          await flightmodel.create(newFlightData);
+        }
+
         const newBookingData = { ...input, seatNumber: bookedSeats }; // Update to use array
         const booking = new bookingModel(newBookingData);
         const savedBooking = await booking.save();
     
-        await flightDataUpdation.save();
+        
     const mainUser = input.passengerName?.[0];
     console.log(mainUser.toString(),'hai')
 

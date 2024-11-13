@@ -10,6 +10,7 @@ const applyJobTypedefs = gql`
     cv: String!
     createdAt:String
     Date:String!
+    userId:String
   }
 
   input ApplyJobInput {
@@ -18,6 +19,8 @@ const applyJobTypedefs = gql`
     phone: String!
     coverLetter: String!
     cv: String!
+    userId:String
+    jobPost:String
   }
 
   type Mutation {

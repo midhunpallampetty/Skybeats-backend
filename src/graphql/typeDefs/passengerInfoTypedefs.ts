@@ -10,6 +10,7 @@ type passengerInfo{
   phone: String!
   passportNumber: String!
   lastUsed: String
+  age:Float
 
 }
   input savePassengerInfo{
@@ -20,6 +21,7 @@ type passengerInfo{
   email: String!
   phone: String!
   passportNumber: String!
+  age:Float
   }
   type Query{
   

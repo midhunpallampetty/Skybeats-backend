@@ -5,5 +5,7 @@ export interface applyJobDTO{
     email:string
     phone:string
     coverLetter:string
-    cv:String
+    cv:string
+    userId:string
+    jobPost:string
 }

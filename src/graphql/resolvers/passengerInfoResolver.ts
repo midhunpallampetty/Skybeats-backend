@@ -9,12 +9,13 @@ interface PassengerInterface{
   phone: string;
   passportNumber: string;
   lastUsed: string;
+  age:number;
 }
 const passengerInfoResolver={
     Mutation:{
         savePassengerInfo:async(_:{},{input}:{input:PassengerInterface})=>{
-           const {userId,firstName,lastName,middleName,email,phone,passportNumber}=input;
-           console.log(input)
+           const {userId,firstName,lastName,middleName,email,phone,passportNumber,age}=input;
+           console.log(input,'ghvhgfvghvfgh')
            const updatedDetails={
             ...input,
             lastUsed:new Date().toISOString(),

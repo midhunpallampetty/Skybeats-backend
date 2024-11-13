@@ -8,5 +8,6 @@ const passengerInfoSchema=new mongoose.Schema({
     phone: { type: String, required: true },
     passportNumber: { type: String, required: true },
     lastUsed: { type: Date, default: Date.now },
+    age:{type:Number},
 })
 export const passengerInfoModel=mongoose.model('passengerinfo',passengerInfoSchema)
