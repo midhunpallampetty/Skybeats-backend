@@ -27,8 +27,9 @@ const applyJobTypedefs = gql`
     applyJob(input: ApplyJobInput!): Apply!
   }
 
-  type Query {
+   type Query {
     getAllApplication: [Apply!]!
+    getApplicationsById(userId: String): [Apply!]!
   }
 `;
 

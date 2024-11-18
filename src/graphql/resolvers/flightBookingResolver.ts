@@ -145,6 +145,7 @@ const flightBookingResolver = {
     getAllBooking: async () => {
       try {
         const bookings = await bookingModel.find()
+        console.log(bookings)
         return bookings;
       } catch (error) {
         console.log('error fetching booking data')
@@ -166,16 +167,56 @@ const flightBookingResolver = {
         throw new Error('Error fetching bookings');
       }
     },
+    getRandomSeat: async (_: {}, args: { flightModel: string }) => {
+      console.log('getRandomSeat function called');
+      console.log(args.flightModel, 'flightModel');
+    
+      try {
+        let seats;
+    
+        // Determine the seat model based on the flight model
+        if (args.flightModel.includes('Boeing 737') || args.flightModel.includes('Airbus A320')) {
+          console.log(args.flightModel, 'Fetching from 180-seat configuration');
+          seats = await oneeightyseatModel.find({ isBooked: false });
+        } else if (args.flightModel.includes('Boeing') && !args.flightModel.includes('737')) {
+          console.log(args.flightModel, 'Fetching from 280-seat configuration');
+          seats = await twoeightyseatModel.find({ isBooked: false });
+        } else if (args.flightModel.includes('Airbus') && !args.flightModel.includes('320')) {
+          console.log(args.flightModel, 'Fetching from 280-seat configuration');
+          seats = await twoeightyseatModel.find({ isBooked: false });
+        } else {
+          console.log(args.flightModel, 'Fetching from 120-seat configuration');
+          seats = await onetwentyseatModel.find({ isBooked: false });
+        }
+    
+        // Check if there are any available seats
+        if (!seats || seats.length === 0) {
+          throw new Error('No available seats for this flight model.');
+        }
+    
+        // Select a random seat
+        const randomIndex = Math.floor(Math.random() * seats.length);
+        const selectedSeat = seats[randomIndex];
+    
+        console.log('Random seat found:', selectedSeat);
+    
+        return {
+          seatId: selectedSeat._id,
+          row: selectedSeat.row,
+          col: selectedSeat.col,
+          class: selectedSeat.class,
+        };
+      } catch (error: any) {
+        console.error('Error fetching random seat:', error);
+        throw new Error('Error fetching random seat: ' + error.message);
+      }
+    },
+    
     
     
   },
 };
-function randomSeat(seat: any) {
 
-
-  const randomNo = Math.floor(Math.random() * seat.length)
-  return randomNo;
-}
 
 
 

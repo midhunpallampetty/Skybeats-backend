@@ -27,6 +27,7 @@ const bookingSchema=new mongoose.Schema({
     cancelled:{type:Boolean,default:false},
     DateofJourney:{type:String},
     cancelledSeats:{type:[String]},
+    createdAt:{type:Date,default:Date.now()}
     
 })
 export const bookingModel=mongoose.model('Booking',bookingSchema);

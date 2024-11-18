@@ -59,7 +59,34 @@ const appliedJobResolver = {
         console.log('error fetching data');
         
       }
-    }
+    },
+     getApplicationsById : async (_: {}, input: { userId: String }) => {
+      try {
+          // Fetching all job applications by the specific user
+          const applications = await applyJobModel.find({ userId: input.userId });
+  
+          if (!applications || applications.length === 0) {
+              throw new Error(`No applications found for user with ID: ${input.userId}`);
+          }
+  
+          // Format `createdAt` to local date format
+          const formattedApplications = applications.map((application) => {
+              const formattedCreatedAt = new Date(application.createdAt).toLocaleDateString('en-GB', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+              });
+              return { ...application.toObject(), createdAt: formattedCreatedAt };
+          });
+  
+          return formattedApplications;
+      } catch (error) {
+          console.error(`Error fetching applications for user ${input.userId}:`, error);
+          throw new Error("Failed to fetch applications for the specified user");
+      }
+  },
+    
+
   }
 };
 

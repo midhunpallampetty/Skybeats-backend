@@ -10,6 +10,12 @@ type Passenger {
     middleName: String
     passportNumber: String
   }
+  type RandomSeat {
+  seatId: ID!
+  row: String!
+  col: String!
+  class: String!
+}
   type Booking {
     id: ID
     userId:ID
@@ -31,6 +37,7 @@ type Passenger {
     flightModel:String
     cancelled:Boolean
     cancelledSeats:[String]
+    createdAt:String
 
   }
   input PassengerInput {
@@ -73,6 +80,7 @@ type Passenger {
     type Query{
     getAllBooking:[Booking!]!
     getBookingById(userId:ID!):[Booking!]!
+     getRandomSeat(flightModel: String!): RandomSeat!
     }
 `;
 
