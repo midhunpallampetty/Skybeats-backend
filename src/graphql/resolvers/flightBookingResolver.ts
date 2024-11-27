@@ -1,7 +1,7 @@
 import { bookingModel } from "../../models/bookingData";
 import { sendTicketEmail } from "../../services/emailService";
-import { BookingInput } from "../interfaces/BookingInput";
-import { SeatModel } from "../../models/Seats";
+import { BookingInput } from "../interfaces/bookingInput";
+import { SeatModel } from "../../models/seats";
 import { flightmodel } from "../../models/flights";
 import {oneeightyseatModel} from '../../models/oneeightySeats'
 import {twoeightyseatModel} from '../../models/twoeightySeats'
@@ -155,8 +155,8 @@ const flightBookingResolver = {
     },
     getBookingById: async (_: {}, { userId }: { userId: string }) => {          
       try {
-        const bookings = await bookingModel.find({ userId: userId });
-    
+        const bookings = await bookingModel.find({ userId: userId }).sort({createdAt:-1});
+    console.log(bookings)
         if (!bookings || bookings.length === 0) {
           throw new Error('No bookings found for this user');
         }

@@ -1,6 +1,6 @@
 import { hotelBookingModel } from "../../models/hotelBookingModel"; 
 import { sendTicketEmail } from "../../services/emailService";
-import { HotelBookingInput } from "../interfaces/HotelBookingInput";
+import { HotelBookingInput } from "../interfaces/hotelBookingInput";
 import { transactionModel } from "../../models/transactionModel";
 import util from 'util-functions-nodejs'
 const hotelBookingResolver = {

@@ -21,6 +21,8 @@ import googleAuthSchema from './googleAuthSchema';
 import transactionTypedefs from './transactiontypedefs';
 import cancelHotelTypedef from './cancelHotelBookingtypedefs';
 import optionalFoodTypedefs from './optionalFoodTypedefs';
+import refreshTokenTypedefs from './refreshTokenTypedefs';
 import passengerinfoTypedefs from './passengerInfoTypedefs';
-const typeDefs=mergeTypeDefs([userTypeDefs,googleAuthSchema,passengerinfoTypedefs,cancelHotelTypedef,optionalFoodTypedefs,transactionTypedefs,cancelBookingTypedef,googleLoginTypedefs,cloudImageTypedefs,returnFlightBTypedefs,profileDetailstypedef,flightDetailsTypeDef,checkSeatTypedefs,applyJobTypedefs,flightTypeDefs,cargoTypedef,hotelBookingTypedefs,careerTypedefs,adminTypedefs,hotelTypeDefs,seatTypedefs,flightBookingTypedefs])
+import verifyTokenTypedef from './verifyTokenTypedefs';
+const typeDefs=mergeTypeDefs([userTypeDefs,googleAuthSchema,verifyTokenTypedef,refreshTokenTypedefs,passengerinfoTypedefs,cancelHotelTypedef,optionalFoodTypedefs,transactionTypedefs,cancelBookingTypedef,googleLoginTypedefs,cloudImageTypedefs,returnFlightBTypedefs,profileDetailstypedef,flightDetailsTypeDef,checkSeatTypedefs,applyJobTypedefs,flightTypeDefs,cargoTypedef,hotelBookingTypedefs,careerTypedefs,adminTypedefs,hotelTypeDefs,seatTypedefs,flightBookingTypedefs])
 export default typeDefs;

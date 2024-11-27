@@ -1,8 +1,8 @@
 import axios from "axios";
 import util from 'util-functions-nodejs'
-import { Locationresponse } from "../interfaces/Locationresponse";
-import { ApiResponse } from "../interfaces/ApiResponse";
-import { Hotel } from "../interfaces/Hotel";
+import { Locationresponse } from "../interfaces/locationresponse";
+import { ApiResponse } from "../interfaces/apiResponse";
+import { Hotel } from "../interfaces/hotel";
 let mycity: string = '';
 const currentcity: {} = axios.get<Locationresponse>('https://ipinfo.io').then((response) => {
   mycity = response.data.city;

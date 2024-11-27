@@ -22,7 +22,8 @@ const userTypeDefs = gql`
   }
  
   type AuthPayload {
-    token: String!
+    accessToken: String!
+    refreshToken: String!
     user: User!
   }
   type ResetResponse {
@@ -31,6 +32,9 @@ const userTypeDefs = gql`
      type ChangeResponse {
     message: String!
     status:Float!
+  }
+    type TokenRefreshPayload {
+    accessToken: String!
   }
     type BlockResponse{
     message:String!

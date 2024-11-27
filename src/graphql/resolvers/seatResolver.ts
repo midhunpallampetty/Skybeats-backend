@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Seat } from "../interfaces/Seat";
-import { ApiResponse } from "../interfaces/ApiResponse";
-import { SeatModel } from "../../models/Seats";
+import { Seat } from "../interfaces/seat";
+import { ApiResponse } from "../interfaces/apiResponse";
+import { SeatModel } from "../../models/seats";
 import {onetwentyseatModel} from '../../models/onetwentySeats'
 import { twoeightyseatModel } from "../../models/twoeightySeats";
 import {oneeightyseatModel} from '../../models/oneeightySeats';

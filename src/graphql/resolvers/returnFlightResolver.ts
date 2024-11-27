@@ -1,7 +1,7 @@
 import { bookingModel } from "../../models/bookingData";
 import { sendTicketEmail } from "../../services/emailService";
-import { BookingInput } from "../interfaces/BookingInput";
-import { SeatModel } from "../../models/Seats";
+import { BookingInput } from "../interfaces/bookingInput";
+import { SeatModel } from "../../models/seats";
 import { flightmodel } from "../../models/flights";
 import {oneeightyseatModel} from '../../models/oneeightySeats'
 import {twoeightyseatModel} from '../../models/twoeightySeats'

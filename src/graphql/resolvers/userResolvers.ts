@@ -5,9 +5,11 @@ import mongoose from "mongoose";
 import { sendOtpEmail, sendResetEmail } from "../../services/emailService";
 import util from "util-functions-nodejs";
 import { verifyOtpDTO } from "../interfaces/verifyOtpDTO";
-import { SignupDTO } from "../interfaces/SignupDTO";
+import { SignupDTO } from "../interfaces/signupDTO";
 import { userLoginDTO,passwordResetDTO } from "../interfaces/userLoginDTO";
 import { profiledetailModel } from "../../models/profileDetailsModel";
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../../utils/tokenUtils';
+
 interface changePasswordDTO{
   id:string,
   oldpassword:string,
@@ -23,45 +25,52 @@ const resolvers = {
         if (existingUser) {
           throw new Error("User already exists");
         }
+    
         const otp = util.generateOtp(6);
         const otpExpiry = new Date(Date.now() + 15 * 60 * 1000);
         console.log(otp, "otp is here");
+    
         const hashedPassword = await bcrypt.hash(password, 10);
-
+    
         const newUser = new UserModel({
           username,
           email,
           password: hashedPassword,
           otp,
           otpExpiry,
-          isBlocked:false,
-          walletBalance:0,
+          isBlocked: false,
+          walletBalance: 0,
         });
-
+    
         await newUser.save();
         console.log("User Saved with credentials:", newUser);
+    
         await sendOtpEmail(email, otp);
-
-        const token = jwt.sign(
-          { userId: newUser._id },
-          process.env.JWT_SECRET!,
-          { expiresIn: "1h" }
-        );
-        console.log("Generated JWT Token:", token);
-
+    
+        // Generate tokens using utility functions
+        const accessToken = generateAccessToken({ userId: newUser._id.toString() });
+        const refreshToken = generateRefreshToken({ userId: newUser._id.toString() });
+    
+        // Store the refresh token in the database
+        await UserModel.updateOne({ _id: newUser._id }, { refreshToken });
+    
         return {
           user: {
             id: newUser._id,
             username: newUser.username,
             email: newUser.email,
           },
-          token,
+          
+            accessToken,
+            refreshToken,
+          
         };
       } catch (error) {
         console.log("Error in Adding User:", error);
         throw new Error("Failed to add User");
       }
     },
+    
 
 
 
@@ -185,38 +194,59 @@ const resolvers = {
       }
     },
    
-    userLogin: async (_: {}, { email, password }:userLoginDTO) => {
+    userLogin: async (_: {}, { email, password }: userLoginDTO) => {
       try {
         const user = await UserModel.findOne({ email });
         if (!user) {
           throw new Error("User not found");
         }
-
+    
         const valid = await bcrypt.compare(password, user.password);
         if (!valid) {
           throw new Error("Incorrect password");
         }
-
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {
-          expiresIn: "1h",
-        });
-        console.log("Generated JWT Token:", token);
-
+    
+        if (user.isBlocked) {
+          throw new Error("User is blocked. Please contact support.");
+        }
+    
+        const accessToken = generateAccessToken({ userId: user._id.toString() });
+        const refreshToken = generateRefreshToken({ userId: user._id.toString() });
+    
+        await UserModel.updateOne({ _id: user._id }, { refreshToken });
+    
+        console.log("Generated Tokens: Access Token and Refresh Token",accessToken,refreshToken);
+    
         return {
           user: {
             id: user._id,
             username: user.username,
             email: user.email,
-            isBlocked:user.isBlocked,
+            isBlocked: user.isBlocked,
           },
-          token,
+          
+            accessToken,
+            refreshToken,
+          
         };
       } catch (error) {
         console.log("Error in Login:", error);
         throw new Error("Failed to login");
       }
     },
+    
+    refreshToken: async (_: any, { refreshToken }: { refreshToken: string }) => {
+      const payload = verifyRefreshToken(refreshToken);
+console.log('generating new accessToken')
+      if (!payload) {
+        throw new Error('Invalid or expired refresh token');
+      }
 
+      const accessToken = generateAccessToken({ userId: payload.userId });
+      const newRefreshToken = generateRefreshToken({ userId: payload.userId });
+
+      return { accessToken, refreshToken: newRefreshToken };
+    },
     resetPassword: async (_: {}, { token, newPassword }:passwordResetDTO) => {
       try {
         const user = await UserModel.findOne({

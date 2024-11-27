@@ -8,14 +8,14 @@ import 'dotenv/config';
 import typeDefs from './graphql/typeDefs';
 import resolvers from './graphql/resolvers';
 import { configureSocket } from './utils/socket';
-
+import morgan from 'morgan';
 const startServer = async () => {
   const app: any = express();
   const httpServer = createServer(app);
 
   
   app.use(cors());
-
+  app.use(morgan('dev'));
   
   configureSocket(httpServer);
 

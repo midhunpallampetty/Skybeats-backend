@@ -34,6 +34,8 @@ const googleLoginResolver = {
             email: email,
             password: password,
             walletBalance:0,
+            isBlocked:false,
+
           });
       console.log('user',user);
           // Save the new user in the database

@@ -1,70 +1,126 @@
-import { checkseatModel } from "../../models/checkSeat";
+import { GraphQLResolveInfo } from "graphql";
+import { checkseatModel } from "../../models/checkSeat"; // Import the Mongoose model
+import { Context } from "../interfaces/context"; // Define a context type for user info
+import { Document, Model } from "mongoose";
 
-// Update the CheckSeat interface to indicate that holdSeatId is an array of strings
-;
-
-interface CheckSeatInput {
-  holdSeatId: string[];
+// Define the shape of a seat document
+interface SeatDocument extends Document {
+  holdSeatId: string;
   aircraftId: string;
   userId: string;
+  sessionId: string;
+  status: "held" | "booked" | "released";
+  createdAt: Date;
 }
 
+// The Mongoose model type for the seat
+type SeatModel = Model<SeatDocument>;
+
+interface SeatInput {
+  holdSeatId: string;
+  aircraftId: string;
+  sessionId?: string;
+  userId:string;
+}
 
 const checkSeatsResolver = {
-  Mutation: {
-    holdSeat: async (_: {}, args: { input: CheckSeatInput }) => {
+  Query: {
+    // Check if a seat is held or available
+    checkSeat: async (
+      _: unknown,
+      { holdSeatId, aircraftId }: { holdSeatId: string; aircraftId: string },
+      context: Context,
+      info: GraphQLResolveInfo
+    ): Promise<boolean> => {
       try {
-        const { holdSeatId, aircraftId, userId } = args.input;
-
-        // Check if any of the seats are already held
-        const alreadyHeldSeats = await checkseatModel.find({
-          aircraftId: aircraftId,    
-          holdSeatId: { $in: holdSeatId }  
-        });
-        
-console.log(alreadyHeldSeats,'already')
-        if (alreadyHeldSeats.length > 0) {
-          console.log('Some seats are already held:', alreadyHeldSeats);
-          const heldSeatIds = alreadyHeldSeats.map(seat => seat.holdSeatId);
-          throw new Error(`One or more seats are already held: ${heldSeatIds.join(', ')}`);
-        }
-
-        // Save each seat separately
-        const newCheckSeats = holdSeatId.map(seatId => ({
-          holdSeatId: seatId,
-          aircraftId,
-          userId
-        }));
-
-        const savedCheckSeats = await checkseatModel.insertMany(newCheckSeats);
-        return savedCheckSeats;
-      } catch (error: any) {
-        console.error('Error saving seats:', error.message);
-        throw new Error('Failed to save seat data');
+        const seat = await checkseatModel.findOne({ holdSeatId, aircraftId });
+        return !!seat; // Return true if the seat is held
+      } catch (error) {
+        console.error(error);
+        throw new Error("Failed to check seat availability.");
       }
+    },
+  },
+
+  Mutation: {
+    // Hold a seat for a user
+    holdSeats: async (
+      _: unknown,
+      { holdSeatIds, aircraftId, sessionId, userId }: { holdSeatIds: string[]; aircraftId: string; sessionId: string; userId: string },
+      context: any
+    ): Promise<SeatDocument[]> => {
+      try {
+        const heldSeats: SeatDocument[] = [];
+        const bulkOperations = []; // Array to hold MongoDB bulk write operations
     
+        for (const holdSeatId of holdSeatIds) {
+          // Check if the seat is already held
+          const existingHold = await checkseatModel.findOne({ holdSeatId, aircraftId });
+    
+          if (existingHold) {
+            throw new Error(`Seat ${holdSeatId} is already held.`);
+          }
+    
+          // Prepare a new hold document for bulk write
+          bulkOperations.push({
+            insertOne: {
+              document: {
+                holdSeatId,
+                aircraftId,
+                sessionId,
+                userId,
+                status: 'held',
+                createdAt: new Date(), // Ensure TTL works as expected
+              },
+            },
+          });
+        }
+    
+        // Perform all insert operations in bulk for efficiency
+        if (bulkOperations.length > 0) {
+          const result = await checkseatModel.bulkWrite(bulkOperations);
+    
+          // Collect the inserted IDs and fetch the documents from the database
+          const insertedIds = Object.values(result.insertedIds); // Extract the inserted IDs
+          const insertedDocuments = await checkseatModel.find({ _id: { $in: insertedIds } });
+    
+          heldSeats.push(...insertedDocuments); // Collect the successfully inserted documents
+        }
+    
+        return heldSeats; // Return all held seats
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to hold the seats.');
+      }
     },
     
-   
     
-    checkSeat: async (_: any, args: { input: CheckSeatInput }) => {
+
+    // Release a held seat
+    releaseSeat: async (
+      _: unknown,
+      { holdSeatId, aircraftId }: { holdSeatId: string; aircraftId: string },
+      context: Context,
+      info: GraphQLResolveInfo
+    ): Promise<boolean> => {
+      const userId = context.user?.id; // Extract the userId from the authenticated context
+      if (!userId) throw new Error("User not authenticated.");
+
       try {
-        console.log(typeof args.input.holdSeatId);
-        // Find a document with the given holdSeatId and aircraftId
-        const existingSeat = await checkseatModel.findOne({
-          holdSeatId: { $in: args.input.holdSeatId }, // Use $in to check against an array
+        const seat = await checkseatModel.findOneAndDelete({
+          holdSeatId,
+          aircraftId,
+          userId,
         });
-     
-        console.log(existingSeat?.aircraftId);
-        
-        if(existingSeat && existingSeat.aircraftId === args.input.aircraftId && existingSeat.userId !== args.input.userId) {
-          return true;
-        } else {
-          return false;
+
+        if (!seat) {
+          throw new Error("No held seat found to release.");
         }
+
+        return true; // Successfully released the seat
       } catch (error) {
-        console.error('Error checking seat:', error);
-        throw new Error('Failed to check seat');
+        console.error(error);
+        throw new Error("Failed to release the seat.");
       }
     },
   },
