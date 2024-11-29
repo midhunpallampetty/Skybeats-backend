@@ -43,9 +43,14 @@ const appliedJobResolver = {
         } else {
           throw new Error('Job post not found');
         }
-      } catch (error: any) {
-        throw new Error('Error applying for job: ' + error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          throw new Error('Error applying for job: ' + error.message);
+        } else {
+          throw new Error('Error applying for job: An unknown error occurred');
+        }
       }
+      
     },
     
     

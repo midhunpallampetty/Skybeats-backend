@@ -30,7 +30,7 @@ const passengerInfoResolver={
         }
     },
     Query: {
-        getPassengerInfo: async (_: any, { userId }: { userId: string }) => {
+        getPassengerInfo: async (_: {}, { userId }: { userId: string }) => {
           try {
             const passengerInfo = await passengerInfoModel.find({ userId });
             

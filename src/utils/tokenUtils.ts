@@ -9,7 +9,7 @@ export interface TokenPayload {
 
 export const generateAccessToken = (payload: TokenPayload): string => {
   console.log("Generating Access Token for Payload:", payload);
-  const token = jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+  const token = jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
   console.log("Generated Access Token:", token);
   return token;
 };

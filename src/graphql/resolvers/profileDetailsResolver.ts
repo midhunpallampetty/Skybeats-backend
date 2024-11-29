@@ -40,7 +40,7 @@ const profileDetailResolver={
             }
             
         },
-        getWalletDetails: async (_:{}, { userId }:any) => {
+        getWalletDetails: async (_:{}, { userId }: { userId: string }) => {
             try {
               const user = await UserModel.findOne({ _id: userId }, { walletBalance: 1, _id: 0 }); 
               
@@ -49,10 +49,16 @@ const profileDetailResolver={
               }
       
               return { walletBalance: user.walletBalance };
-            } catch (error:any) {
-              console.log(`Can't perform operation: ${error.message}`);
-              throw new Error("Error fetching wallet details");
-            }
+            } catch (error: unknown) {
+                if (error instanceof Error) {
+                  console.log(`Can't perform operation: ${error.message}`);
+                  throw new Error("Error fetching wallet details");
+                } else {
+                  console.log("An unknown error occurred");
+                  throw new Error("Error fetching wallet details");
+                }
+              }
+              
           },
     }
 }

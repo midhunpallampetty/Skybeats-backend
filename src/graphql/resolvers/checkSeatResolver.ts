@@ -47,7 +47,7 @@ const checkSeatsResolver = {
     holdSeats: async (
       _: unknown,
       { holdSeatIds, aircraftId, sessionId, userId }: { holdSeatIds: string[]; aircraftId: string; sessionId: string; userId: string },
-      context: any
+      
     ): Promise<SeatDocument[]> => {
       try {
         const heldSeats: SeatDocument[] = [];

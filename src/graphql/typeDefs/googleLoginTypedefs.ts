@@ -16,7 +16,8 @@ const googleLoginTypedefs = gql`
     name: String!
     email: String!
     password: String!
-    token: String
+    accessToken: String
+    refreshToken: String
     id:ID
     
   }

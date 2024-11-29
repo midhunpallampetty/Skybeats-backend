@@ -23,9 +23,14 @@ const hotelBookingResolver = {
         const saveTransaction=new transactionModel(transactionData)
         saveTransaction.save()
         return savedBooking;
-      } catch (error:any) {
-        throw new Error('Error creating booking: ' + error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          throw new Error('Error creating booking: ' + error.message);
+        } else {
+          throw new Error('Error creating booking: An unknown error occurred');
+        }
       }
+      
     },
     
   },
@@ -38,7 +43,18 @@ const hotelBookingResolver = {
         console.log('Error fetching booking data:', error); // Better logging of the actual error
         throw new Error('Error while getting data from booking service');
       }
+    },
+    listAllHotels: async (_: {}, args: {}, { hotelModel }: { hotelModel: any }) => {
+      try {
+        // Fetch all hotels from the hotelModel
+        const hotels = await hotelBookingModel.find();
+        return hotels;
+      } catch (error) {
+        console.error('Error fetching hotel data:', error); // Log the actual error
+        throw new Error('Error while fetching hotel data');
+      }
     }
+    
     
   },
 };                                                                                                                    

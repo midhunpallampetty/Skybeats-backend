@@ -6,6 +6,7 @@ import { flightmodel } from "../../models/flights";
 import {oneeightyseatModel} from '../../models/oneeightySeats'
 import {twoeightyseatModel} from '../../models/twoeightySeats'
 import {onetwentyseatModel} from '../../models/onetwentySeats'
+import { Seat } from "../interfaces/seat";
 type Passenger = {
   firstName: string;
   lastName: string;
@@ -122,10 +123,16 @@ const returnFlightResolver = {
         );
     
         return savedBooking;
-      } catch (error: any) {
-        console.error('Error in createReturnBooking:', error.message);
-        throw new Error('Error creating booking: ' + error.message);
+      }catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error('Error in createReturnBooking:', error.message);
+          throw new Error('Error creating booking: ' + error.message);
+        } else {
+          console.error('Error in createReturnBooking: An unknown error occurred');
+          throw new Error('Error creating booking: An unknown error occurred');
+        }
       }
+      
     },
                                                               
     
@@ -134,7 +141,7 @@ const returnFlightResolver = {
   },
  
 };
-function randomSeat(seats: any[]) {
+function randomSeat(seats: unknown[]) {
     const randomIndex = Math.floor(Math.random() * seats.length);
     return randomIndex;
   }

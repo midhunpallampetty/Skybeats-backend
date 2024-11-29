@@ -1,6 +1,8 @@
 import { UserModel } from '../../models/userModel';
 import jwt from 'jsonwebtoken';
 import { googleAuthModel } from '../../models/googleAuth';
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../../utils/tokenUtils';
+
 interface GoogleLoginInput {
   email: string;
   password: string;
@@ -10,7 +12,7 @@ interface GoogleLoginInput {
 const googleLoginResolver = {
   Mutation: {
     handleGoogleLogin: async (
-      _: any,
+      _: {},
       { input }: { input: GoogleLoginInput },
     ) => {
       const { email, password, username } = input;
@@ -23,6 +25,8 @@ const googleLoginResolver = {
         const token = jwt.sign({ userId: email }, process.env.JWT_SECRET!, {
           expiresIn: "1h",
         });
+        const accessToken = generateAccessToken({ userId: email });
+        const refreshToken = generateRefreshToken({ userId:email });
       const authData={email,token}
       const newAuth=new googleAuthModel(authData)
       newAuth.save()
@@ -47,10 +51,11 @@ const googleLoginResolver = {
           name: user.username,
           email: user.email,
           password: user.password,
-          token,
+          accessToken,
+          refreshToken,
           id:user._id
         };
-
+       console.log(dataToReturn,'data')
         return dataToReturn;
       } catch (error) {
         console.error('Error handling Google login:', error);

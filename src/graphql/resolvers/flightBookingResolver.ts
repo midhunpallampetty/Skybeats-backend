@@ -133,9 +133,14 @@ const flightBookingResolver = {
         );
     
         return savedBooking;
-      } catch (error: any) {
-        throw new Error('Error creating booking: ' + error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          throw new Error('Error creating booking: ' + error.message);
+        } else {
+          throw new Error('Error creating booking: An unknown error occurred');
+        }
       }
+      
     },
     
     
@@ -206,10 +211,16 @@ const flightBookingResolver = {
           col: selectedSeat.col,
           class: selectedSeat.class,
         };
-      } catch (error: any) {
-        console.error('Error fetching random seat:', error);
-        throw new Error('Error fetching random seat: ' + error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error('Error fetching random seat:', error.message);
+          throw new Error('Error fetching random seat: ' + error.message);
+        } else {
+          console.error('Error fetching random seat: An unknown error occurred');
+          throw new Error('Error fetching random seat: An unknown error occurred');
+        }
       }
+      
     },
     
     

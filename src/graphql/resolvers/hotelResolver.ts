@@ -34,7 +34,7 @@ const hotelResolvers = {
           return [];
         }
 
-        const hotels: Hotel[] = properties.map((hotel: any) => ({
+        const hotels: Hotel[] = properties.map((hotel: Hotel) => ({
           type: hotel.type || 'unknown',
           name: hotel.name || 'No name provided',
           gps_coordinates: hotel.gps_coordinates ? {
@@ -67,12 +67,27 @@ const hotelResolvers = {
         }));
 
         return hotels;
-      } catch (error: any) {
-        console.error('Error fetching hotels:', error.response ? error.response.data : error.message);
-        throw new Error('Failed to fetch nearby hotels');
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          // Use a type guard to check for the presence of `response`
+          const isAxiosError = (err: Error): err is Error & { response?: { data?: string } } =>
+            "response" in err;
+      
+          const errorMessage = isAxiosError(error) && error.response?.data
+            ? error.response.data
+            : error.message;
+      
+          console.error('Error fetching hotels:', errorMessage);
+          throw new Error('Failed to fetch nearby hotels');
+        } else {
+          console.error('Error fetching hotels: An unknown error occurred');
+          throw new Error('Failed to fetch nearby hotels');
+        }
       }
+      
+      
     },
-    HotelByLocation: async (_:any,city:String) => {
+    HotelByLocation: async (_:{},city:String) => {
       try {
         const response = await axios.get<ApiResponse>('https://serpapi.com/search', {
           params: {
@@ -93,7 +108,7 @@ const hotelResolvers = {
           return [];
         }
 
-        const hotels: Hotel[] = properties.map((hotel: any) => ({
+        const hotels: Hotel[] = properties.map((hotel: Hotel) => ({
           type: hotel.type || 'unknown',
           name: hotel.name || 'No name provided',
           gps_coordinates: hotel.gps_coordinates ? {
@@ -127,10 +142,19 @@ const hotelResolvers = {
 
         console.log(hotels);
         return hotels;
-      } catch (error: any) {
-        console.error('Error fetching hotels:', error.response ? error.response.data : error.message);
-        throw new Error('Failed to fetch nearby hotels');
+      }catch (error: unknown) {
+        if (error instanceof Error) {
+          // Check if error has a response property (commonly seen with HTTP libraries like axios)
+          const hasResponse = (error as { response?: { data?: string } }).response;
+          const errorMessage = hasResponse?.data || error.message;
+          console.error('Error fetching hotels:', errorMessage);
+          throw new Error('Failed to fetch nearby hotels');
+        } else {
+          console.error('Error fetching hotels: An unknown error occurred');
+          throw new Error('Failed to fetch nearby hotels');
+        }
       }
+      
     },
 
 

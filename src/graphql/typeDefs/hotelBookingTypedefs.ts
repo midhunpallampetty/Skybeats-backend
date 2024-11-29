@@ -35,6 +35,7 @@ const hotelBookingTypedefs = gql`
   }
     type Query{
       getAllHotelBooking(userId:String!):[hotelBooking!]!
+      listAllHotels: [hotelBooking!]!
     }
 `;
 

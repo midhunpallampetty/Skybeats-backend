@@ -4,7 +4,7 @@ import airline_codes from '../../utils/airline_codes.json';  // Import the updat
 
 export const flightDetailsResolver = {
   Query: {
-    async getAircraftModel(_: any, { flightNumber, airline }: { flightNumber: string, airline: string }) {
+    async getAircraftModel(_: {}, { flightNumber, airline }: { flightNumber: string, airline: string }) {
       try {
         // Clean the flight number and airline inputs
         const cleanedFlightNumber = flightNumber.trim();
@@ -31,7 +31,7 @@ export const flightDetailsResolver = {
 
         // Fetch the webpage
         const response = await axios.get(url);
-        const html: any = response.data;
+        const html: string = response.data;
         const $ = cheerio.load(html);
 
         const aircraftInfo: string[] = [];

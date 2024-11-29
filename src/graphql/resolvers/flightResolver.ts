@@ -2,7 +2,17 @@ import { IResolvers } from '@graphql-tools/utils';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { HttpsProxyAgent } from 'https-proxy-agent';
-
+interface Flight {
+    airline: string;
+    flightNumber: string | number;
+    departureTime: string;
+    departureAirport: string;
+    arrivalTime: string;
+    arrivalAirport: string;
+    duration: string;
+    stops: string;
+    price: number;
+  }
 const fetchFlightData = async (fromAirport: string, toAirport: string) => {
     console.log(fromAirport, toAirport);
     const URL = `https://www.cleartrip.com/flight-schedule/${fromAirport}-${toAirport}-flights.html`;
@@ -14,11 +24,11 @@ const fetchFlightData = async (fromAirport: string, toAirport: string) => {
         const response = await axios.get(URL)
 
         console.log('type of response', typeof response.data);
-        const html: any = response.data;
+        const html: string = response.data;
 
         const $ = cheerio.load(html);
 
-        const flights: any[] = [];
+        const flights: Flight[] = [];
 
         $('.list-inline.owd-mbento').each((index, element) => {
             const airline = $(element).find('.owd-airline-names').text().trim();

@@ -9,7 +9,7 @@ import { SignupDTO } from "../interfaces/signupDTO";
 import { userLoginDTO,passwordResetDTO } from "../interfaces/userLoginDTO";
 import { profiledetailModel } from "../../models/profileDetailsModel";
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../../utils/tokenUtils';
-
+import { TemporaryUserModel } from "../../models/temporaryUserModel";
 interface changePasswordDTO{
   id:string,
   oldpassword:string,
@@ -26,54 +26,36 @@ const resolvers = {
           throw new Error("User already exists");
         }
     
+        const existingTempUser = await TemporaryUserModel.findOne({ email });
+        if (existingTempUser) {
+          throw new Error("OTP already sent. Please verify your email.");
+        }
+    
         const otp = util.generateOtp(6);
         const otpExpiry = new Date(Date.now() + 15 * 60 * 1000);
-        console.log(otp, "otp is here");
+        console.log(otp, "Generated OTP");
     
         const hashedPassword = await bcrypt.hash(password, 10);
     
-        const newUser = new UserModel({
+        const tempUser = new TemporaryUserModel({
           username,
           email,
           password: hashedPassword,
           otp,
           otpExpiry,
-          isBlocked: false,
-          walletBalance: 0,
         });
     
-        await newUser.save();
-        console.log("User Saved with credentials:", newUser);
+        await tempUser.save();
+        console.log("Temporary user saved:", tempUser);
     
         await sendOtpEmail(email, otp);
     
-        // Generate tokens using utility functions
-        const accessToken = generateAccessToken({ userId: newUser._id.toString() });
-        const refreshToken = generateRefreshToken({ userId: newUser._id.toString() });
-    
-        // Store the refresh token in the database
-        await UserModel.updateOne({ _id: newUser._id }, { refreshToken });
-    
-        return {
-          user: {
-            id: newUser._id,
-            username: newUser.username,
-            email: newUser.email,
-          },
-          
-            accessToken,
-            refreshToken,
-          
-        };
+        return { message: "OTP sent to your email. Please verify to complete signup." };
       } catch (error) {
-        console.log("Error in Adding User:", error);
-        throw new Error("Failed to add User");
+        console.log("Error in userSignup:", error);
+        throw new Error("Failed to sign up user.");
       }
     },
-    
-
-
-
     blockUser: async (_: {}, { id }: { id: string }) => {
       try {
         const user = await UserModel.findById(id);
@@ -160,39 +142,53 @@ const resolvers = {
         };
       }
     },
-    
-    
-    verifyOtp: async (_: {}, { email, otp }:verifyOtpDTO ) => {
+    verifyOtp: async (_: {}, { email, otp }: verifyOtpDTO) => {
       try {
-        const user = await UserModel.findOne({ email });
-        if (!user) {
-          throw new Error("User not found");
+        const tempUser = await TemporaryUserModel.findOne({ email });
+        if (!tempUser) {
+          throw new Error("Temporary user not found.");
         }
-        if (user.otp !== otp || user.otpExpiry! < new Date()) {
-          throw new Error("OTP invalid or expired");
+    
+        if (tempUser.otp !== otp || tempUser.otpExpiry < new Date()) {
+          throw new Error("Invalid or expired OTP.");
         }
-        user.otp = undefined;
-        user.otpExpiry = undefined;
-        await user.save();
-        const token = jwt.sign(
-          { userId: user._id },
-          process.env.JWT_SECRET!,
-          { expiresIn: "1h" }
-        );
-        console.log(token, "token generated");
+    
+        // Move user data to the main UserModel
+        const newUser = new UserModel({
+          username: tempUser.username,
+          email: tempUser.email,
+          password: tempUser.password,
+          isBlocked: false,
+          walletBalance: 0,
+        });
+    
+        await newUser.save();
+        console.log("Verified user saved to main database:", newUser);
+    
+        // Delete temporary user
+        await TemporaryUserModel.deleteOne({ email });
+    
+        // Generate tokens
+        const accessToken = generateAccessToken({ userId: newUser._id.toString() });
+        const refreshToken = generateRefreshToken({ userId: newUser._id.toString() });
+    
+        await UserModel.updateOne({ _id: newUser._id }, { refreshToken });
+    console.log('token',refreshToken,accessToken,'token......................');
         return {
           user: {
-            id: user._id,
-            username: user.username,
-            email: user.email,
+            id: newUser._id,
+            username: newUser.username,
+            email: newUser.email,
           },
-          token,
+          accessToken,
+          refreshToken,
         };
       } catch (error) {
-        console.log("Error in OTP verification:", error);
-        throw new Error("OTP verification failed");
+        console.log("Error in verifyOtp:", error);
+        throw new Error("Failed to verify OTP.");
       }
     },
+    
    
     userLogin: async (_: {}, { email, password }: userLoginDTO) => {
       try {
@@ -235,7 +231,7 @@ const resolvers = {
       }
     },
     
-    refreshToken: async (_: any, { refreshToken }: { refreshToken: string }) => {
+    refreshToken: async (_: {}, { refreshToken }: { refreshToken: string }) => {
       const payload = verifyRefreshToken(refreshToken);
 console.log('generating new accessToken')
       if (!payload) {

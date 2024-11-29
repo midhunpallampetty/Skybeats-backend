@@ -5,9 +5,14 @@ const userTypeDefs = gql`
     id: String!
     username: String!
     email: String!
-    isBlocked:Boolean!
+    isBlocked: Boolean!
     createdAt: String
     updatedAt: String!
+  }
+
+  type TemporaryUser {
+    username: String!
+    email: String!
   }
 
   input SignupInput {
@@ -20,45 +25,51 @@ const userTypeDefs = gql`
     email: String!
     password: String!
   }
- 
+
   type AuthPayload {
     accessToken: String!
     refreshToken: String!
     user: User!
   }
+
+  type OtpResponse {
+    message: String!
+  }
+
   type ResetResponse {
     message: String!
   }
-     type ChangeResponse {
+
+  type ChangeResponse {
     message: String!
-    status:Float!
+    status: Float!
   }
-    type TokenRefreshPayload {
+
+  type TokenRefreshPayload {
     accessToken: String!
+    refreshToken: String!
   }
-    type BlockResponse{
-    message:String!
-    }
+
+  type BlockResponse {
+    message: String!
+  }
+
   type Query {
     getUserList: [User!]!
     getUser(email: String!): User
-    getUserById(userId:String!):User
+    getUserById(userId: String!): User
   }
 
   type Mutation {
     requestPasswordReset(email: String!): ResetResponse!
-    blockUser(id:String!):BlockResponse!
+    blockUser(id: String!): BlockResponse!
     changePassword(id: String!, oldpassword: String!, newpassword: String!): ChangeResponse!
-    userSignup(username: String!, email: String!, password: String!): AuthPayload!
+    userSignup(username: String!, email: String!, password: String!): OtpResponse!
     resetPassword(token: String!, newPassword: String!): ResetResponse!
     verifyOtp(email: String!, otp: String!): AuthPayload!
-
     userLogin(email: String!, password: String!): AuthPayload!
-
     updateUser(id: ID!, username: String!, email: String!, password: String!): User
-
     addUser(id: ID, username: String!, email: String!, password: String!): User
-
     deleteUser(email: String!): Boolean!
   }
 `;

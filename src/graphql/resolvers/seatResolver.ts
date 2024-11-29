@@ -50,10 +50,16 @@ const seatResolvers = {
         // console.log(seatsWithBookingStatus, 'Processed seats with booking status');
         return seatsWithBookingStatus;
     
-      } catch (error: any) {
-        console.error('Error fetching seats:', error.message);
-        throw new Error('Failed to fetch seats');
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error('Error fetching seats:', error.message);
+          throw new Error('Failed to fetch seats');
+        } else {
+          console.error('Error fetching seats: An unknown error occurred');
+          throw new Error('Failed to fetch seats: An unknown error occurred');
+        }
       }
+      
     }
     
   
