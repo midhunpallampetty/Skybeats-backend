@@ -20,20 +20,20 @@ const cargoResolver = {
 
     toggleApprovalStatus: async (_: {}, args: { trackingId: string }) => {
       try {
-        // Destructure trackingId from args
+        
         const { trackingId } = args;
 
-        // Find the cargo record by trackingId
+        
         const cargo = await cargoModel.findOne({ trackingId });
 
         if (!cargo) {
           throw new Error("Cargo not found");
         }
 
-        // Toggle the 'approved' status
+        
         cargo.approved = !cargo.approved;
 
-        // Save the updated cargo record
+      
         const updatedCargo = await cargo.save();
 
         return updatedCargo;

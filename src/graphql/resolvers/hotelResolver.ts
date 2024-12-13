@@ -69,7 +69,7 @@ const hotelResolvers = {
         return hotels;
       } catch (error: unknown) {
         if (error instanceof Error) {
-          // Use a type guard to check for the presence of `response`
+          
           const isAxiosError = (err: Error): err is Error & { response?: { data?: string } } =>
             "response" in err;
       
@@ -144,7 +144,7 @@ const hotelResolvers = {
         return hotels;
       }catch (error: unknown) {
         if (error instanceof Error) {
-          // Check if error has a response property (commonly seen with HTTP libraries like axios)
+          
           const hasResponse = (error as { response?: { data?: string } }).response;
           const errorMessage = hasResponse?.data || error.message;
           console.error('Error fetching hotels:', errorMessage);

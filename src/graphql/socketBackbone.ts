@@ -6,7 +6,7 @@ const server=http.createServer(app)
 const backBoneServer=()=>{
     const io=new Server(server,{
         cors:{
-            origin:'http://localhost:3000',
+            origin:'https://www.skybeats.site/',
             methods:['GET','POST'],
             credentials:true,
         }

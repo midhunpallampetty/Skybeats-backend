@@ -25,7 +25,7 @@ const optionalFoodResolver = {
           price
         });
 
-        // Save the meal item into the database
+        
         const savedMeal = await newMeal.save();
         console.log("Food item added successfully:", savedMeal);
 

@@ -114,7 +114,7 @@ const resolvers = {
           };
         }
     
-        // Compare the old password with the stored password
+        
         const isPasswordCorrect = await bcrypt.compare(oldpassword, user.password);
         if (!isPasswordCorrect) {
           return {
@@ -123,11 +123,11 @@ const resolvers = {
           };
         }
     
-        // Hash the new password
+
         const hashedNewPassword = await bcrypt.hash(newpassword, 10);
         user.password = hashedNewPassword;
     
-        // Save the updated user with the new password
+      
         await user.save();
     
         return {
@@ -153,7 +153,7 @@ const resolvers = {
           throw new Error("Invalid or expired OTP.");
         }
     
-        // Move user data to the main UserModel
+        
         const newUser = new UserModel({
           username: tempUser.username,
           email: tempUser.email,
@@ -165,10 +165,10 @@ const resolvers = {
         await newUser.save();
         console.log("Verified user saved to main database:", newUser);
     
-        // Delete temporary user
+        
         await TemporaryUserModel.deleteOne({ email });
     
-        // Generate tokens
+  
         const accessToken = generateAccessToken({ userId: newUser._id.toString() });
         const refreshToken = generateRefreshToken({ userId: newUser._id.toString() });
     

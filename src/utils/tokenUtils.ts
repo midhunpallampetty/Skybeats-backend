@@ -29,7 +29,7 @@ export const verifyRefreshToken = (token: string): TokenPayload | null => {
     } else {
       console.error('Invalid refresh token');
     }
-    return null; // Return null for any verification failure
+    return null; 
   }
 };
 export const verifyAccessToken = (token: string): TokenPayload | null => {
@@ -42,6 +42,6 @@ export const verifyAccessToken = (token: string): TokenPayload | null => {
     } else {
       console.error('Invalid access token');
     }
-    return null; // Return null for any verification failure
+    return null; 
   }
 };

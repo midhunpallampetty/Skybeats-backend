@@ -30,24 +30,24 @@ function generateAccessToken(adminId: string, adminType: string) {
   };
 
 
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET!, { expiresIn: "1m" });
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET!, { expiresIn: "15m" });
 }
 
 const generateRefreshToken = (adminId: string) => {
   return jwt.sign(
     { adminId },
-    process.env.REFRESH_TOKEN_SECRET!, // Separate secret for refresh tokens
-    { expiresIn: '7d' } // Longer lifespan for refresh token
+    process.env.REFRESH_TOKEN_SECRET!, 
+    { expiresIn: '7d' } 
   );
 };
 function verifyRefreshToken(token: string): { adminId: string } | null {
   try {
-    // Verify the token using the refresh token secret
+  
     const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET!) as {
       adminId: string;
     };
 
-    // Return the decoded payload containing adminId
+    
     return {
       adminId: decoded.adminId,
     };
@@ -57,32 +57,32 @@ function verifyRefreshToken(token: string): { adminId: string } | null {
     } else {
       console.error("An unknown error occurred during refresh token verification");
     }
-    return null; // Return null if the token is invalid or expired
+    return null; 
   }
 }
 const adminResolver = {
   Mutation: {
     adminLogin: async (_: {}, { email, password, adminType }: adminDTO) => {
       try {
-        // Find admin by email
+    
         const admin: Admin | null  = await AdminModel.findOne({ email });
         if (!admin) {
           throw new Error("Unable to find admin");
         }
 
-        // Check password
+        
         const isPasswordValid = await bcrypt.compare(password, admin.password);
         if (!isPasswordValid) {
           throw new Error("Incorrect password");
         }
 
-        // Verify admin type
+      
         if (admin.adminType !== adminType) {
           throw new Error("Admin type does not match");
         }
 
-        // Generate tokens
-        const adminaccessToken = generateAccessToken(admin._id, admin.adminType); // Includes role in token
+  
+        const adminaccessToken = generateAccessToken(admin._id, admin.adminType); 
         const adminrefreshToken = generateRefreshToken(admin._id);
 
         return {
@@ -109,22 +109,22 @@ const adminResolver = {
       { adminrefreshToken }: { adminrefreshToken: string }
     ) => {
       try {
-        // Step 1: Verify the refresh token
+        
         const decoded = verifyRefreshToken(adminrefreshToken);
         if (!decoded) {
           throw new Error("Invalid or expired refresh token");
         }
 
-        // Step 2: Retrieve adminId from the decoded token
+        
         const { adminId } = decoded;
 
-        // Step 3: Ensure the admin exists
+        
         const admin = await AdminModel.findById(adminId);
         if (!admin) {
           throw new Error("Admin not found");
         }
 
-        // Step 4: Generate a new access token
+        
         const newAccessToken = generateAccessToken(
           admin._id.toString(),
           admin.adminType + ''

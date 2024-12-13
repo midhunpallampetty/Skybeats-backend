@@ -60,7 +60,7 @@ const flightBookingResolver = {
         const selectedSeatNumbers = args.input.seatNumber; 
         const bookedSeats = [];
     
-        // Check if each seat exists in the available seats
+        
         if (selectedSeatNumbers && selectedSeatNumbers.length > 0) {
           for (const seatId of selectedSeatNumbers) {
             const seatExists = seats.find(seat => seat._id.toString() === seatId);
@@ -72,19 +72,19 @@ const flightBookingResolver = {
             
             await seatExists.save();
     
-            bookedSeats.push(seatId); // Add existing seat ID to bookedSeats array
+            bookedSeats.push(seatId); 
           }
         } else {
-          // Random seat selection if no seats provided
-          let number = Math.floor(Math.random() * seats.length); // Random index
+          
+          let number = Math.floor(Math.random() * seats.length);
           while (seats[number].isBooked) {
-            number = Math.floor(Math.random() * seats.length); // Pick another random seat
+            number = Math.floor(Math.random() * seats.length);
           }
     
           seats[number].isBooked = true;
-          await seats[number].save(); // Mark the random seat as booked
+          await seats[number].save(); 
     
-          bookedSeats.push(seats[number]._id); // Add selected random seat
+          bookedSeats.push(seats[number]._id); 
         }
     
         const { input } = args;
@@ -96,15 +96,15 @@ const flightBookingResolver = {
         console.log(existingFlight,'existing flight')
         if (existingFlight) {
           console.log('Flight found, updating seatsBooked array');
-          // If the flight exists, push the new seat numbers into the existing seatsBooked array
+          
           await flightmodel.findOneAndUpdate(
             { flightNumber },
-            { $addToSet: { seatsBooked: { $each: seatsBooked } } }, // $addToSet to avoid duplicates
+            { $addToSet: { seatsBooked: { $each: seatsBooked } } }, 
             { new: true }
           );
         } else {
           console.log('Flight not found, creating new document');
-          // If the flight does not exist, create a new document with flightNumber and seatsBooked
+          
           const newFlightData = {
             flightNumber,
             seatsBooked
@@ -112,7 +112,7 @@ const flightBookingResolver = {
           await flightmodel.create(newFlightData);
         }
 
-        const newBookingData = { ...input, seatNumber: bookedSeats }; // Update to use array
+        const newBookingData = { ...input, seatNumber: bookedSeats };
         const booking = new bookingModel(newBookingData);
         const savedBooking = await booking.save();
     
@@ -179,7 +179,7 @@ const flightBookingResolver = {
       try {
         let seats;
     
-        // Determine the seat model based on the flight model
+    
         if (args.flightModel.includes('Boeing 737') || args.flightModel.includes('Airbus A320')) {
           console.log(args.flightModel, 'Fetching from 180-seat configuration');
           seats = await oneeightyseatModel.find({ isBooked: false });
@@ -194,12 +194,12 @@ const flightBookingResolver = {
           seats = await onetwentyseatModel.find({ isBooked: false });
         }
     
-        // Check if there are any available seats
+        
         if (!seats || seats.length === 0) {
           throw new Error('No available seats for this flight model.');
         }
     
-        // Select a random seat
+    
         const randomIndex = Math.floor(Math.random() * seats.length);
         const selectedSeat = seats[randomIndex];
     

@@ -10,7 +10,7 @@ const seatResolvers = {
   Query: {
     getSeats: async (_: {}, { flightNumber, flightModel }: { flightNumber: string, flightModel: string }) => {
       try {
-        // Step 1: Find the flight details
+        
         const flight = await flightmodel.findOne({ flightNumber });
         console.log(flightNumber, flightModel, 'Fetching flight details');
     
@@ -23,27 +23,27 @@ const seatResolvers = {
           console.log('Flight not found, returning all seats without any bookings.');
         }
     
-        // Step 2: Determine seat configuration based on flight model
+        
         if (flightModel.includes('Boeing 737') || flightModel.includes('Airbus A320')) {
           console.log(flightModel, 'Setting seat count to 180');
-          allSeats = await oneeightyseatModel.find(); // 180-seat configuration
+          allSeats = await oneeightyseatModel.find(); 
         } else if (flightModel.includes('Boeing') && !flightModel.includes('737')) {
           console.log(flightModel, 'Setting seat count to 280');
-          allSeats = await twoeightyseatModel.find(); // 280-seat configuration for other Boeing models
+          allSeats = await twoeightyseatModel.find(); 
         } else if (flightModel.includes('Airbus') && !flightModel.includes('320')) {
           console.log(flightModel, 'Setting seat count to 280');
-          allSeats = await twoeightyseatModel.find(); // 280-seat configuration for other Airbus models
+          allSeats = await twoeightyseatModel.find(); 
         } else {
           console.log(flightModel, 'Setting seat count to 120');
-          allSeats = await onetwentyseatModel.find(); // Default to 120-seat configuration
+          allSeats = await onetwentyseatModel.find(); 
         }
     
-        // Step 3: Mark seats as booked if they are in the bookedSeatIds array
+        
         const seatsWithBookingStatus = allSeats.map(seat => {
           const isBooked = bookedSeatIds.includes(seat._id.toString());
           return {
-            ...seat.toObject(), // Convert seat document to plain object
-            isBooked,           // Add isBooked field (default: false if flight not found)
+            ...seat.toObject(), 
+            isBooked,           
           };
         });
     

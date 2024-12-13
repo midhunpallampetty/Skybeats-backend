@@ -18,10 +18,10 @@ const googleLoginResolver = {
       const { email, password, username } = input;
 
       try {
-        // Check if a user with the provided email already exists
+        
         let user = await UserModel.findOne({ email });
 
-        // Generate a JWT token with the user's email
+        
         const token = jwt.sign({ userId: email }, process.env.JWT_SECRET!, {
           expiresIn: "1h",
         });
@@ -31,7 +31,7 @@ const googleLoginResolver = {
       const newAuth=new googleAuthModel(authData)
       newAuth.save()
         if (!user) {
-          // If no user exists, create a new one
+          
           
           user = new UserModel({
             username: username,
@@ -42,11 +42,11 @@ const googleLoginResolver = {
 
           });
       console.log('user',user);
-          // Save the new user in the database
+          
           await user.save();
         }
 
-        // Prepare the user data to return, including the generated token
+        
         const dataToReturn = {
           name: user.username,
           email: user.email,

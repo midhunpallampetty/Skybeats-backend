@@ -5,7 +5,7 @@ const getGoogleResolver = {
   Query: {
     async getTokenByEmail(_:{}, { email }: { email: string }) {
       try {
-        // Find the document by email
+      
         const googleAuth = await googleAuthModel.findOne({ email });
 
         if (!googleAuth) {

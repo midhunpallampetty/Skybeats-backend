@@ -17,11 +17,11 @@ const generateTicketPDF = (bookingData: BookingData): Buffer => {
 
   doc.on('data', buffers.push.bind(buffers));
   doc.on('end', () => {
-    // This callback will be executed when the PDF document is finished
+  
     console.log('PDF generation completed');
   });
 
-  // Add content to the PDF
+  
   doc.fontSize(20).text('Flight Ticket', { align: 'center' });
   doc.moveDown();
   doc.fontSize(14).text(`Passenger Name: ${bookingData.passengerName}`);
@@ -34,7 +34,7 @@ const generateTicketPDF = (bookingData: BookingData): Buffer => {
 
   doc.end();
 
-  // Return the buffer containing the PDF data
+
   return Buffer.concat(buffers);
 };
 

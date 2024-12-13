@@ -11,7 +11,7 @@ const hotelBookingResolver = {
         console.log(input,'the dadgwefgtaa is here')
         const booking = new hotelBookingModel(input);
         const savedBooking = await booking.save();
-        // await sendTicketEmail(input.email,input.guestName);
+        
         const trackingId = 'TRB' + util.generateOtp(12)
         const transactionData={
           userId:input.userId,
@@ -37,20 +37,20 @@ const hotelBookingResolver = {
   Query:{
     getAllHotelBooking: async (_: {}, { userId }: { userId: String }) => {
       try {
-        const bookings = await hotelBookingModel.find({ userId }); // Correct usage of find
+        const bookings = await hotelBookingModel.find({ userId }); 
         return bookings;
       } catch (error) {
-        console.log('Error fetching booking data:', error); // Better logging of the actual error
+        console.log('Error fetching booking data:', error); 
         throw new Error('Error while getting data from booking service');
       }
     },
     listAllHotels: async (_: {}, args: {}, { hotelModel }: { hotelModel: any }) => {
       try {
-        // Fetch all hotels from the hotelModel
+        
         const hotels = await hotelBookingModel.find();
         return hotels;
       } catch (error) {
-        console.error('Error fetching hotel data:', error); // Log the actual error
+        console.error('Error fetching hotel data:', error); 
         throw new Error('Error while fetching hotel data');
       }
     }

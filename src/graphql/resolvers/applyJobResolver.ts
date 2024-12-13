@@ -1,4 +1,4 @@
-import { applyJobModel } from "../../models/applyJob";  // Ensure this is correctly named and imported
+import { applyJobModel } from "../../models/applyJob";  
 import { applyJobDTO } from "../interfaces/applyJobDTO";
 import { careerModel } from "../../models/careerModel";
 
@@ -7,21 +7,21 @@ const appliedJobResolver = {
     applyJob: async (_: {}, { input }: { input: applyJobDTO }) => {
       console.log(input);
       try {
-        // Find the job post by designation
+        
         const jobPost = await careerModel.findOne({ designation: input.jobPost });
     
         if (jobPost) {
-          // Initialize usersApplied array if it doesn't exist
+          
           if (!Array.isArray(jobPost.usersApplied)) {
             jobPost.usersApplied = [];
           }
     
-          // Check if the user has already applied
+          
           if (jobPost.usersApplied.includes(input.userId)) {
             throw new Error('User has already applied for this job');
           }
     
-          // User hasn't applied, proceed with the application
+        
           const newApplication = new applyJobModel({
             name: input.name,
             email: input.email,
@@ -32,10 +32,10 @@ const appliedJobResolver = {
             userId: input.userId
           });
     
-          // Save the new application
+          
           const savedApplication = await newApplication.save();
     
-          // Add userId to the usersApplied array and save the job post
+          
           jobPost.usersApplied.push(input.userId);
           await jobPost.save();
     
@@ -67,14 +67,14 @@ const appliedJobResolver = {
     },
      getApplicationsById : async (_: {}, input: { userId: String }) => {
       try {
-          // Fetching all job applications by the specific user
+        
           const applications = await applyJobModel.find({ userId: input.userId });
   
           if (!applications || applications.length === 0) {
               throw new Error(`No applications found for user with ID: ${input.userId}`);
           }
   
-          // Format `createdAt` to local date format
+          
           const formattedApplications = applications.map((application) => {
               const formattedCreatedAt = new Date(application.createdAt).toLocaleDateString('en-GB', {
                   day: '2-digit',

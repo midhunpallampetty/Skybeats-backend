@@ -8,6 +8,7 @@ import 'dotenv/config';
 import typeDefs from './graphql/typeDefs';
 import resolvers from './graphql/resolvers';
 import { configureSocket } from './utils/socket';
+import  errorHandler  from '../src/graphql/middlewares/errorHandler';
 import morgan from 'morgan';
 const startServer = async () => {
   const app: any = express();
@@ -20,7 +21,7 @@ const startServer = async () => {
   configureSocket(httpServer);
 
   await connectDB();
-
+app.use(errorHandler);
   const server = new ApolloServer({
     typeDefs,
     resolvers,

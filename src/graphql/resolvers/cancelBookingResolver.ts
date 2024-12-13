@@ -34,28 +34,28 @@ const cancelBookingResolver={
         },
         CancelTicketByOne: async (_: {}, input: { BookingId: string; seatNumber: string }) => {
             try {
-                // Locate the booking by ID
+                
                 const booking = await bookingModel.findOne({ _id: input.BookingId });
                 if (!booking) throw new Error("Booking not found");
         
                 console.log(booking.seatNumber, 'Current seats:', input.seatNumber);
         
-                // Check if the seat exists in the booking's seats array
+                
                 const seatExists = booking.seatNumber.includes(input.seatNumber);
                 if (!seatExists) throw new Error(`Seat number ${input.seatNumber} not found in booking`);
         
-                // Initialize cancelledSeats if it doesn't exist
+                
                 if (!booking.cancelledSeats) booking.cancelledSeats = [];
         
-                // Check if the seat is already canceled
+                
                 if (booking.cancelledSeats.includes(input.seatNumber)) {
                     throw new Error(`Seat number ${input.seatNumber} has already been canceled.`);
                 }
         
-                // Add the seat number to cancelledSeats
+            
                 booking.cancelledSeats.push(input.seatNumber);
         
-                // Save the updated booking with upsert
+                
                 await bookingModel.updateOne(
                     { _id: input.BookingId },
                     { $set: { cancelledSeats: booking.cancelledSeats } },

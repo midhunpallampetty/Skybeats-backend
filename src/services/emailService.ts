@@ -111,7 +111,7 @@ export const sendResetEmail = async (email: string, resetUrl: string) => {
 
 export const sendTicketEmail = async (email: string, passengerName: string, flightNumber: string, departureAirport: string, arrivalAirport: string, departureTime: string, arrivalTime: string, FarePaid: number, ticketUrls: string[]) => {
   const attachments = ticketUrls.map((url, index) => ({
-    filename: `Ticket-${index + 1}.pdf`, // Naming the tickets as Ticket-1.pdf, Ticket-2.pdf, etc.
+    filename: `Ticket-${index + 1}.pdf`, 
     path: url,
     contentType: 'application/pdf'
   }));
