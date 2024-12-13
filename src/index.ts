@@ -29,8 +29,8 @@ app.use(errorHandler);
   await server.start();
   server.applyMiddleware({ app });
 
-  httpServer.listen(process.env.PORT ||3300, () => {
-    console.log(`Server started on port ${process.env.PORT}`);
+  httpServer.listen(3300, () => {
+    console.log(`Server started on port 3300`);
   });
 };
 
